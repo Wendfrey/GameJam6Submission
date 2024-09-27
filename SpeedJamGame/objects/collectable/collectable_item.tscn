@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcs5cay4ae5v5"]
+
+[ext_resource type="Script" path="res://objects/collectable/collectable_item.gd" id="1_4h2jt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rdt2v"]
+radius = 2.04779
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kig58"]
+albedo_color = Color(0, 0.482353, 0.647059, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fuk0f"]
+material = SubResource("StandardMaterial3D_kig58")
+radius = 2.0
+height = 4.0
+
+[node name="Collectable" type="Node3D"]
+script = ExtResource("1_4h2jt")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_rdt2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fuk0f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://dn1i54jggd4m0"]
+
+[ext_resource type="Texture2D" uid="uid://c4lf6les8qh86" path="res://textures/Purple/texture_03.png" id="1_2d017"]
+[ext_resource type="Script" path="res://objects/speedring/speed_ring.gd" id="1_oiio2"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_up6fp"]
+inner_radius = 2.0
+outer_radius = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ejnq"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.545098)
+albedo_texture = ExtResource("1_2d017")
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4644"]
+size = Vector2(4, 4)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7fcs"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.545098)
+albedo_texture = ExtResource("1_2d017")
+
+[sub_resource type="QuadMesh" id="QuadMesh_vnhoo"]
+flip_faces = true
+size = Vector2(4, 4)
+orientation = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4yb2p"]
+height = 0.245807
+radius = 1.35581
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8vvd"]
+size = Vector3(0.371338, 1.07446, 0.399414)
+
+[node name="SpeedRing" type="AnimatableBody3D"]
+script = ExtResource("1_oiio2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_up6fp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_5ejnq")
+mesh = SubResource("QuadMesh_g4644")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_p7fcs")
+mesh = SubResource("QuadMesh_vnhoo")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_4yb2p")
+
+[node name="RingSide1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.828647, -0.559772, 0, 0.559772, 0.828647, 0, 0, 0, 1, -1.86446, -1.25949, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.828647, -0.559772, 0, 0.559772, 0.828647, 0, 0, 0, 1, 1.86446, 1.25949, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide5" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.352724, -0.935728, 0, 0.935728, 0.352724, 0, 0, 0, 1, -0.793628, -2.10539, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide6" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.352724, -0.935728, 0, 0.935728, 0.352724, 0, 0, 0, 1, 0.793628, 2.10539, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide7" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.311456, -0.950261, 0, 0.950261, -0.311456, 0, 0, 0, 1, 0.700776, -2.13809, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide8" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.311456, -0.950261, 0, 0.950261, -0.311456, 0, 0, 0, 1, -0.700776, 2.13809, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide9" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.794891, -0.606752, 0, 0.606752, -0.794891, 0, 0, 0, 1, 1.78851, -1.36519, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[node name="RingSide10" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.794891, -0.606752, 0, 0.606752, -0.794891, 0, 0, 0, 1, -1.78851, 1.36519, 0)
+shape = SubResource("BoxShape3D_j8vvd")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

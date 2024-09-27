@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxiykidlkbj81"]
+
+[ext_resource type="Script" path="res://objects/player/PlayerController.gd" id="1_nhe21"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hhd1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vw2jk"]
+size = Vector3(2.77, 0.185, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xqkvv"]
+
+[node name="PlayerController" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_nhe21")
+
+[node name="CameraRotator" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRotator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05453, 3.6875)
+fov = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1hhd1")
+
+[node name="ModelHolder" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ModelHolder"]
+mesh = SubResource("BoxMesh_vw2jk")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelHolder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xqkvv")
+skeleton = NodePath("../..")
