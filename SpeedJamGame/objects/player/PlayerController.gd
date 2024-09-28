@@ -14,7 +14,6 @@ enum MoveType {
 		MAX_SPEED_SQ = pow(value, 2)
 @export var DEACCELERATION:float = 0.5
 @export_range(0.01, 2*PI) var rotation_speed:float = PI
-@export var movementType: MoveType = MoveType.ALWAYS_FORWARD 
 
 
 @onready var modelAnim = $ModelHolder/spaceship/AnimationPlayer
@@ -23,27 +22,19 @@ enum MoveType {
 @onready var MAX_SPEED_SQ = pow(MAX_SPEED, 2)
 var current_speed:float = 0
 var extraspeed_ring: float = 0
-var movement_func: Callable = mode_move_always_forward
 var enable_movement: bool = true
 
-
 func _ready():
-	if (movementType == MoveType.ALWAYS_FORWARD):
-		movement_func = mode_move_always_forward
-	else:
-		movement_func = mode_drag_forces
-		
 	$ModelHolder/spaceship/AnimationPlayer.play("idle")
 
 func _physics_process(delta):
-
 	# Get the input direction and handle the movement/deceleration.
 		
 	var rotate_direction = Input.get_axis("rotate_left", "rotate_right")
 	
 	rotate_y(- rotation_speed * rotate_direction * delta * (1 + current_speed/MAX_SPEED))
 	if enable_movement:
-		movement_func.call()
+		mode_drag_forces()
 	var collision:KinematicCollision3D = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()).limit_length(5)
@@ -88,19 +79,6 @@ func mode_drag_forces():
 			velocity = velocity.limit_length(MAX_SPEED)
 	else:
 		velocity = velocity.move_toward(Vector3.ZERO, DEACCELERATION)
-
-func mode_move_always_forward():
-	if Input.is_action_pressed("move_accel"):
-		current_speed = move_toward(current_speed, MAX_SPEED, ACCELERATION)
-		
-		if velocity.length_squared() > MAX_SPEED_SQ:
-			velocity = velocity.limit_length(MAX_SPEED)
-	else:
-		current_speed = move_toward(current_speed, 0, DEACCELERATION)
-		if modelAnim.current_animation != "idle":
-			modelAnim.play("idle")
-	if not is_zero_approx(current_speed):
-		velocity = -basis.z * current_speed
 		
 func ring_interaction():
 	extraspeed_ring = 2
