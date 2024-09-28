@@ -1,32 +1,31 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxiykidlkbj81"]
 
 [ext_resource type="Script" path="res://objects/player/PlayerController.gd" id="1_nhe21"]
+[ext_resource type="PackedScene" uid="uid://dcgxmduequatd" path="res://assets/obj/spaceship.glb" id="2_t380r"]
+[ext_resource type="AudioStream" uid="uid://d1ap140a435i6" path="res://objects/player/sounds/737192__sadiquecat__distant-car-tire-screetch.wav" id="3_svmxw"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1hhd1"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_vw2jk"]
-size = Vector3(2.77, 0.185, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xqkvv"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_io2ks"]
+radius = 1.679
 
 [node name="PlayerController" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 motion_mode = 1
 script = ExtResource("1_nhe21")
 ACCELERATION = 0.5
+movementType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_1hhd1")
+shape = SubResource("CylinderShape3D_io2ks")
 
 [node name="ModelHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.752904)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ModelHolder"]
-mesh = SubResource("BoxMesh_vw2jk")
-skeleton = NodePath("../MeshInstance3D")
+[node name="spaceship" parent="ModelHolder" instance=ExtResource("2_t380r")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelHolder"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_xqkvv")
-skeleton = NodePath("../..")
+[node name="BrakingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_svmxw")

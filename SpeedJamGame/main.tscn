@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfm0x8errofts"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_js0qf"]
+[ext_resource type="Script" path="res://TimeCounter.gd" id="2_1532q"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_js0qf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("2_1532q")
+
+[node name="World" type="Node" parent="."]
