@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://8okv5y3t0pjo"]
+
+[ext_resource type="Shader" uid="uid://bul6taliqbaeg" path="res://assets/materials/shaders/DashBeltTest.tres" id="1_2xuwt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2xuwt")
