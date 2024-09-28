@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyc01qp6tmpbf"]
+
+[ext_resource type="Script" path="res://objects/teleporter/teleport.gd" id="1_ajngd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7o4s"]
+size = Vector3(1, 3, 1)
+
+[node name="Teleport" type="Area3D"]
+transform = Transform3D(1.00352, 0, 0, 0, 1.00352, 0, 0, 0, 1.00352, 0, 0, 0)
+script = ExtResource("1_ajngd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_b7o4s")
+
+[node name="glows" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+light_color = Color(0.784314, 1, 1, 1)
+light_energy = 4.0
+omni_range = 20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -105,14 +105,13 @@ func mode_move_always_forward():
 func ring_interaction():
 	extraspeed_ring = 2
 	
+
+	
 func animation_left(mode):
 	animation_tree["parameters/conditions/left"] = mode;
-	animation_tree["parameters/conditions/leftStop"] = !mode;
 	
 func animation_right(mode):
 	animation_tree["parameters/conditions/right"] = mode;
-	animation_tree["parameters/conditions/rightStop"] = !mode;
 	
 func animation_brake(mode):
 	animation_tree["parameters/conditions/brake"] = mode;
-	animation_tree["parameters/conditions/brakeStop"] = !mode;
