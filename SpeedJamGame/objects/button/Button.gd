@@ -2,7 +2,7 @@ extends Area3D
 
 signal triggered
 
-@onready var bodyMesh:StandardMaterial3D = $Body.mesh.material
+@onready var bodyMesh:StandardMaterial3D = $Body.material_override
 @export var colorBase: Color = Color("ff0015")
 @export var colorActive: Color = Color("ff4c41")
 @export var only_once: bool = true

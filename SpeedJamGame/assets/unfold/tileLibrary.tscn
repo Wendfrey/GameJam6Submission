@@ -5,13 +5,13 @@
 [ext_resource type="Material" uid="uid://cassyisehcpau" path="res://assets/materials/WallPink.tres" id="3_8tcwo"]
 [ext_resource type="Material" uid="uid://8okv5y3t0pjo" path="res://assets/materials/DashBelt.tres" id="3_ntrkd"]
 [ext_resource type="Material" uid="uid://br1twx4e3qwqc" path="res://assets/materials/WallWhite.tres" id="4_2pdov"]
-[ext_resource type="Material" uid="uid://3320hxi82cpe" path="res://assets/materials/TPBase.tres" id="4_q1xjx"]
+[ext_resource type="Material" path="res://assets/materials/TPBase.tres" id="4_q1xjx"]
 [ext_resource type="Material" uid="uid://2e4sudsb36fi" path="res://assets/materials/WallBlack.tres" id="5_qcri5"]
-[ext_resource type="Material" uid="uid://dvjmikx8srqv4" path="res://assets/materials/TPLight1.tres" id="5_wciif"]
+[ext_resource type="Material" path="res://assets/materials/TPLight1.tres" id="5_wciif"]
 [ext_resource type="Material" uid="uid://d06s8blx54fnw" path="res://assets/materials/FloorDark.tres" id="6_bjqmk"]
-[ext_resource type="Material" uid="uid://cwlcxkp1th67j" path="res://assets/materials/TPLight2.tres" id="6_s4yc1"]
-[ext_resource type="Material" uid="uid://bbq4eqfiuc1iw" path="res://assets/materials/TPLight3.tres" id="7_l2s1o"]
-[ext_resource type="Material" uid="uid://bw44x7ny1djys" path="res://assets/materials/SlowGround.tres" id="8_tnl6p"]
+[ext_resource type="Material" path="res://assets/materials/TPLight2.tres" id="6_s4yc1"]
+[ext_resource type="Material" path="res://assets/materials/TPLight3.tres" id="7_l2s1o"]
+[ext_resource type="Material" path="res://assets/materials/SlowGround.tres" id="8_tnl6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiwbs"]
 resource_name = "floor"
