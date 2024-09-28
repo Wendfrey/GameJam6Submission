@@ -1560,6 +1560,7 @@ surface_material_override/2 = ExtResource("2_dlwqe")
 
 [node name="Tile_Dash" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+gi_mode = 2
 mesh = SubResource("ArrayMesh_jxk83")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_dphrm")
