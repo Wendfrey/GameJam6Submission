@@ -28,6 +28,7 @@ colorActive = Color(1, 0.886275, 0.870588, 1)
 shape = SubResource("CylinderShape3D_5wqm2")
 
 [node name="BaseButton" type="CSGBox3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_jrfb5")
 size = Vector3(3, 0.1, 3)
 

@@ -14,7 +14,6 @@ enum MoveType {
 		MAX_SPEED_SQ = pow(value, 2)
 @export var DEACCELERATION:float = 0.5
 @export_range(0.01, 2*PI) var rotation_speed:float = PI
-@export var movementType: MoveType = MoveType.ALWAYS_FORWARD 
 
 
 @onready var modelAnim = $ModelHolder/spaceship/AnimationPlayer
@@ -23,45 +22,32 @@ enum MoveType {
 @onready var MAX_SPEED_SQ = pow(MAX_SPEED, 2)
 var current_speed:float = 0
 var extraspeed_ring: float = 0
-var movement_func: Callable = mode_move_always_forward
 var enable_movement: bool = true
-
+var smooth_rotation_anim:float = 0
 
 func _ready():
-	if (movementType == MoveType.ALWAYS_FORWARD):
-		movement_func = mode_move_always_forward
-	else:
-		movement_func = mode_drag_forces
-		
 	$ModelHolder/spaceship/AnimationPlayer.play("idle")
 
 func _physics_process(delta):
-
 	# Get the input direction and handle the movement/deceleration.
 		
 	var rotate_direction = Input.get_axis("rotate_left", "rotate_right")
+	smooth_rotation_anim = move_toward(smooth_rotation_anim, rotate_direction, 3 * delta)
+	animation_tree["parameters/idle 2/blend_position"] = smooth_rotation_anim;
 	
 	rotate_y(- rotation_speed * rotate_direction * delta * (1 + current_speed/MAX_SPEED))
 	if enable_movement:
-		movement_func.call()
+		mode_drag_forces()
 	var collision:KinematicCollision3D = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()).limit_length(5)
-		
-	if rotate_direction>0:
-		animation_left(false);
-		animation_right(true);
-	elif rotate_direction<0:
-		animation_left(true);
-		animation_right(false);
-	else:
-		animation_left(false);
-		animation_right(false);
+	
+	
 
 var bracking_tween: Tween
 func _unhandled_input(event):
 	if event.is_action_pressed("move_bracker") and not bracking_tween:
-		var temp_velocity = velocity.normalized()
+		var temp_velocity = velocity.limit_length(5)
 		var vectorRotation = Vector3(-PI/32, 0, 0)
 		brakingSound.play()
 		animation_brake(true)
@@ -88,30 +74,9 @@ func mode_drag_forces():
 			velocity = velocity.limit_length(MAX_SPEED)
 	else:
 		velocity = velocity.move_toward(Vector3.ZERO, DEACCELERATION)
-
-func mode_move_always_forward():
-	if Input.is_action_pressed("move_accel"):
-		current_speed = move_toward(current_speed, MAX_SPEED, ACCELERATION)
-		
-		if velocity.length_squared() > MAX_SPEED_SQ:
-			velocity = velocity.limit_length(MAX_SPEED)
-	else:
-		current_speed = move_toward(current_speed, 0, DEACCELERATION)
-		if modelAnim.current_animation != "idle":
-			modelAnim.play("idle")
-	if not is_zero_approx(current_speed):
-		velocity = -basis.z * current_speed
 		
 func ring_interaction():
 	extraspeed_ring = 2
-	
-
-	
-func animation_left(mode):
-	animation_tree["parameters/conditions/left"] = mode;
-	
-func animation_right(mode):
-	animation_tree["parameters/conditions/right"] = mode;
 	
 func animation_brake(mode):
 	animation_tree["parameters/conditions/brake"] = mode;

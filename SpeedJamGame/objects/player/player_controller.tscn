@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bxiykidlkbj81"]
+[gd_scene load_steps=40 format=3 uid="uid://bxiykidlkbj81"]
 
 [ext_resource type="Script" path="res://objects/player/PlayerController.gd" id="1_nhe21"]
 [ext_resource type="AudioStream" uid="uid://d1ap140a435i6" path="res://objects/player/sounds/737192__sadiquecat__distant-car-tire-screetch.wav" id="3_svmxw"]
@@ -216,6 +216,13 @@ bind/23/pose = Transform3D(0.0112196, -9.75993e-08, 0.999937, -2.84217e-14, 1, 9
 bind/24/name = &"neutral_bone"
 bind/24/bone = -1
 bind/24/pose = Transform3D(1.94707e-07, 0, -1, -1, 0, -1.94707e-07, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vxw1"]
+albedo_color = Color(0.745098, 0.619608, 0.0431373, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p4qhd"]
+material = SubResource("StandardMaterial3D_3vxw1")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="Animation" id="Animation_66n8d"]
 resource_name = "TurnLeftEnd"
@@ -1128,6 +1135,30 @@ tracks/17/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D/ParticlesLeftHand:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Armature/Skeleton3D/ParticlesRightHand:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1whfj"]
 resource_name = "brakeStart"
@@ -1258,6 +1289,30 @@ tracks/17/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D/ParticlesLeftHand:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.10957e-05),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Armature/Skeleton3D/ParticlesRightHand:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_o1vjo"]
 resource_name = "dash"
@@ -1936,6 +1991,30 @@ bones/24/scale = Vector3(1, 1, 1)
 [node name="Cube" type="MeshInstance3D" parent="ModelHolder/spaceship/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_i506k")
 skin = SubResource("Skin_r1twy")
+
+[node name="ParticlesLeftHand" type="CPUParticles3D" parent="ModelHolder/spaceship/Armature/Skeleton3D"]
+transform = Transform3D(-2, 0, -6.27833e-07, 0, 2, 0, 6.27833e-07, 0, -2, 3.83749, -2.35607, 0.837194)
+emitting = false
+amount = 5
+lifetime = 0.2
+mesh = SubResource("PlaneMesh_p4qhd")
+emission_colors = PackedColorArray(0.788235, 1, 0, 1, 0.764706, 0.596078, 0, 1)
+direction = Vector3(0, 1, 1)
+spread = 30.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[node name="ParticlesRightHand" type="CPUParticles3D" parent="ModelHolder/spaceship/Armature/Skeleton3D"]
+transform = Transform3D(-2, 0, -6.27833e-07, 0, 2, 0, 6.27833e-07, 0, -2, -4.20599, -2.35607, 0.837196)
+emitting = false
+amount = 5
+lifetime = 0.2
+mesh = SubResource("PlaneMesh_p4qhd")
+emission_colors = PackedColorArray(0.788235, 1, 0, 1, 0.764706, 0.596078, 0, 1)
+direction = Vector3(0, 1, 1)
+spread = 30.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ModelHolder/spaceship"]
 libraries = {
