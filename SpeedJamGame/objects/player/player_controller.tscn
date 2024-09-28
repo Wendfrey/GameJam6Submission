@@ -218,7 +218,9 @@ bind/24/bone = -1
 bind/24/pose = Transform3D(1.94707e-07, 0, -1, -1, 0, -1.94707e-07, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vxw1"]
+shading_mode = 0
 albedo_color = Color(0.745098, 0.619608, 0.0431373, 1)
+disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p4qhd"]
 material = SubResource("StandardMaterial3D_3vxw1")
@@ -1748,10 +1750,6 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_bkxmj")
 blend_point_2/pos = 1.0
 value_label = "turning"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ci4uq"]
-advance_mode = 2
-advance_expression = "self[\"parameters/conditions/brake\"] == false"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gwwuk"]
 advance_mode = 2
 
@@ -1771,22 +1769,26 @@ xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"brake"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nd47u"]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0ysf"]
+advance_mode = 2
+advance_expression = "self[\"parameters/conditions/brake\"] == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q7m6o"]
+xfade_time = 0.2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5tled"]
 states/End/position = Vector2(1083, 97)
 states/Start/position = Vector2(245, 106)
 states/brakeEnd/node = SubResource("AnimationNodeAnimation_ufl3e")
-states/brakeEnd/position = Vector2(205, 199)
+states/brakeEnd/position = Vector2(239, 199)
 states/brakeStart/node = SubResource("AnimationNodeAnimation_dvwn3")
 states/brakeStart/position = Vector2(367, 199)
 states/dash/node = SubResource("AnimationNodeAnimation_6vp7x")
 states/dash/position = Vector2(525, 18)
 "states/idle 2/node" = SubResource("AnimationNodeBlendSpace1D_ondca")
 "states/idle 2/position" = Vector2(385, 106)
-transitions = ["brakeStart", "brakeEnd", SubResource("AnimationNodeStateMachineTransition_ci4uq"), "Start", "idle 2", SubResource("AnimationNodeStateMachineTransition_gwwuk"), "idle 2", "dash", SubResource("AnimationNodeStateMachineTransition_q6wyb"), "dash", "idle 2", SubResource("AnimationNodeStateMachineTransition_mw6or"), "idle 2", "brakeStart", SubResource("AnimationNodeStateMachineTransition_4h2j8"), "brakeEnd", "idle 2", SubResource("AnimationNodeStateMachineTransition_nd47u")]
+transitions = ["Start", "idle 2", SubResource("AnimationNodeStateMachineTransition_gwwuk"), "idle 2", "dash", SubResource("AnimationNodeStateMachineTransition_q6wyb"), "dash", "idle 2", SubResource("AnimationNodeStateMachineTransition_mw6or"), "idle 2", "brakeStart", SubResource("AnimationNodeStateMachineTransition_4h2j8"), "brakeStart", "brakeEnd", SubResource("AnimationNodeStateMachineTransition_m0ysf"), "brakeEnd", "idle 2", SubResource("AnimationNodeStateMachineTransition_q7m6o")]
 graph_offset = Vector2(41, -54)
 
 [node name="PlayerController" type="CharacterBody3D"]
@@ -1798,6 +1800,7 @@ axis_lock_angular_z = true
 motion_mode = 1
 script = ExtResource("1_nhe21")
 ACCELERATION = 0.5
+MAX_SPEED = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_io2ks")
@@ -1998,7 +2001,6 @@ emitting = false
 amount = 5
 lifetime = 0.2
 mesh = SubResource("PlaneMesh_p4qhd")
-emission_colors = PackedColorArray(0.788235, 1, 0, 1, 0.764706, 0.596078, 0, 1)
 direction = Vector3(0, 1, 1)
 spread = 30.0
 initial_velocity_min = 3.0
@@ -2010,7 +2012,6 @@ emitting = false
 amount = 5
 lifetime = 0.2
 mesh = SubResource("PlaneMesh_p4qhd")
-emission_colors = PackedColorArray(0.788235, 1, 0, 1, 0.764706, 0.596078, 0, 1)
 direction = Vector3(0, 1, 1)
 spread = 30.0
 initial_velocity_min = 3.0

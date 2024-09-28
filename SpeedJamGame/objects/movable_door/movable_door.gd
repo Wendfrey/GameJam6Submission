@@ -13,7 +13,8 @@ var open = false :
 		open = value
 
 func _ready():
-	triggerer.triggered.connect(change_open)
+	if triggerer:
+		triggerer.triggered.connect(change_open)
 
 func change_open():
 	open = not open
