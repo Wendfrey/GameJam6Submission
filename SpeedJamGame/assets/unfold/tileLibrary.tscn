@@ -1386,6 +1386,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q4rqs")
 
 [node name="TileLibrary" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tile_TP" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)

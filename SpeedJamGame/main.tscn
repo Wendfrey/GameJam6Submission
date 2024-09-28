@@ -1,12 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfm0x8errofts"]
+[gd_scene load_steps=4 format=3 uid="uid://dfm0x8errofts"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_js0qf"]
 [ext_resource type="Script" path="res://TimeCounter.gd" id="2_1532q"]
+[ext_resource type="Script" path="res://MainMenuScript.gd" id="4_3581c"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_js0qf")
 
+[node name="MainMenu" type="CanvasLayer" parent="."]
+script = ExtResource("4_3581c")
+
+[node name="Control" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="MainMenu/Control"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 124.0
+offset_right = 178.0
+offset_bottom = 174.0
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="CreditsButton" type="Button" parent="MainMenu/Control"]
+offset_left = 80.0
+offset_top = 260.0
+offset_right = 208.0
+offset_bottom = 310.0
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 30
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MainMenu/Control"]
+offset_left = 78.0
+offset_top = 402.0
+offset_right = 176.0
+offset_bottom = 452.0
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -14,10 +58,14 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("2_1532q")
 
 [node name="World" type="Node" parent="."]
+
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="pressed" from="MainMenu/Control/StartButton" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/Control/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
