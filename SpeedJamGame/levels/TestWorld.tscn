@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4c420726nyc4"]
+[gd_scene load_steps=13 format=3 uid="uid://c4c420726nyc4"]
 
-[ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="1_x503s"]
 [ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_hiqnn"]
 [ext_resource type="Texture2D" uid="uid://ixrsg0b42cm" path="res://textures/Green/texture_02.png" id="3_y8xp2"]
 [ext_resource type="Texture2D" uid="uid://dldsida6nlnaa" path="res://textures/Purple/texture_01.png" id="4_8gmm0"]
@@ -39,23 +38,18 @@ size = Vector3(1, 5, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_8lmqj"]
 size = Vector3(5, 50, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ywiiq"]
-size = Vector3(80, 60, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hthqf"]
-size = Vector3(30, 30, 100)
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h0fma")
 
 [node name="PlayerController" parent="." instance=ExtResource("2_hiqnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.7406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+platform_on_leave = 2
 MAX_SPEED = 20.0
+DEACCELERATION = 0.25
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -228.637)
 material_override = SubResource("StandardMaterial3D_cu8vn")
 mesh = SubResource("QuadMesh_hhkm8")
 
@@ -78,12 +72,12 @@ material_override = SubResource("StandardMaterial3D_86hn5")
 mesh = SubResource("BoxMesh_8lmqj")
 
 [node name="BigColumn3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3762, 25, -308.526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7629, 25, 174.917)
 material_override = SubResource("StandardMaterial3D_86hn5")
 mesh = SubResource("BoxMesh_8lmqj")
 
 [node name="BigColumn4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2605, 25, -404.286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8738, 25, 79.1572)
 material_override = SubResource("StandardMaterial3D_86hn5")
 mesh = SubResource("BoxMesh_8lmqj")
 
@@ -93,21 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44212, 22.152, -79.1974)
 [node name="SpeedRing3" parent="." instance=ExtResource("5_jnf5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6529, 22.1904, -154.622)
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4862, 30.0715, -241.755)
-use_collision = true
-collision_layer = 2
-collision_mask = 3
-mesh = SubResource("BoxMesh_ywiiq")
-
-[node name="TrashObj" parent="CSGMesh3D" instance=ExtResource("1_x503s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60017, -1.79575, -3.72198)
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D"]
-operation = 2
-mesh = SubResource("BoxMesh_hthqf")
-
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGMesh3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-operation = 2
-mesh = SubResource("BoxMesh_hthqf")
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 53.5367, 0)
+projection = 1
+size = 40.0
