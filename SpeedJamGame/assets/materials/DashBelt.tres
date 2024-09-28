@@ -1,7 +1,12 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://8okv5y3t0pjo"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://8okv5y3t0pjo"]
 
-[ext_resource type="Shader" uid="uid://bul6taliqbaeg" path="res://assets/materials/shaders/DashBeltTest.tres" id="1_2xuwt"]
+[ext_resource type="Shader" path="res://assets/materials/shaders/DashBelt.gdshader" id="1_wr0rx"]
+[ext_resource type="Texture2D" uid="uid://262ia0u0hxfs" path="res://assets/textures/DashTexture.png" id="2_7ivn0"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_2xuwt")
+shader = ExtResource("1_wr0rx")
+shader_parameter/direction_and_speed = Vector2(0, 1.5)
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/flip = false
+shader_parameter/albedo = ExtResource("2_7ivn0")

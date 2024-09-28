@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://bul6taliqbaeg"]
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://bul6taliqbaeg"]
 
 [ext_resource type="Texture2D" uid="uid://262ia0u0hxfs" path="res://assets/textures/DashTexture.png" id="1_qyxm5"]
 
@@ -9,6 +9,8 @@ texture = ExtResource("1_qyxm5")
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeVec3Constant" id="VisualShaderNodeVec3Constant_uf16c"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_5ehxr"]
 
 [resource]
 code = "shader_type spatial;
@@ -29,12 +31,14 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-673.235, -74.448)
+graph_offset = Vector2(-596.072, -5.86615)
 nodes/fragment/0/position = Vector2(400, 20)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_6qsjb")
 nodes/fragment/2/position = Vector2(-60, 0)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_udojy")
-nodes/fragment/3/position = Vector2(-540, 120)
+nodes/fragment/3/position = Vector2(-700, 200)
 nodes/fragment/4/node = SubResource("VisualShaderNodeVec3Constant_uf16c")
-nodes/fragment/4/position = Vector2(-580, 0)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
+nodes/fragment/4/position = Vector2(-720, 20)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_5ehxr")
+nodes/fragment/5/position = Vector2(-260, 120)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 5, 0, 3, 0, 5, 1)

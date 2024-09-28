@@ -1,14 +1,13 @@
 shader_type spatial;
+render_mode unshaded;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform vec2 direction_and_speed = vec2(0.25, 0.00);
+uniform vec2 scale = vec2(1.0);
+uniform bool flip = false;
+uniform sampler2D albedo: source_color;
 
 void fragment() {
-	// Called for every pixel the material is visible on.
+	vec2 uv = UV * scale - direction_and_speed * TIME;
+	if (flip) { uv = 1.0 - uv; }
+	ALBEDO = texture(albedo, uv).rgb;
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
