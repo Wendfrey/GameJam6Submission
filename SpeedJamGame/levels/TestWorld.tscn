@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4c420726nyc4"]
+[gd_scene load_steps=14 format=3 uid="uid://c4c420726nyc4"]
 
 [ext_resource type="Script" path="res://levels/TestWorld.gd" id="1_b74s6"]
 [ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="1_x503s"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ixrsg0b42cm" path="res://textures/Green/texture_02.png" id="3_y8xp2"]
 [ext_resource type="Texture2D" uid="uid://dldsida6nlnaa" path="res://textures/Purple/texture_01.png" id="4_8gmm0"]
 [ext_resource type="PackedScene" uid="uid://dn1i54jggd4m0" path="res://objects/speedring/speed_ring.tscn" id="5_jnf5x"]
-[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://door.tscn" id="6_4ec0w"]
+[ext_resource type="MeshLibrary" uid="uid://ci5rue8cc6aij" path="res://assets/unfold/tileLibrary.tres" id="5_vih46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xcue6"]
 
@@ -143,45 +143,10 @@ projection = 1
 current = true
 size = 40.0
 
-[node name="Door" parent="." instance=ExtResource("6_4ec0w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5844, 0, -22.873)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.914229, -0.192566, -0.356517, -0.0901646, -0.954477, 0.284332, -0.39504, -0.227799, -0.889973, 0, 10.0992, 45.199)
-light_color = Color(0.8, 0.8, 0.8, 1)
-
-[node name="Pickups" type="Node" parent="."]
-
-[node name="Collectable" parent="Pickups" groups=["pickup"] instance=ExtResource("1_x503s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6158, 1, -13.0718)
-
-[node name="Collectable2" parent="Pickups" groups=["pickup"] instance=ExtResource("1_x503s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8957, 1, 6.55319)
-
-[node name="Collectable3" parent="Pickups" groups=["pickup"] instance=ExtResource("1_x503s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1235, 1, 9.9966)
-
-[node name="Collectable4" parent="Pickups" groups=["pickup"] instance=ExtResource("1_x503s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28565, 1, -15.8731)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_3lndk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = SubResource("StandardMaterial3D_gqy87")
-mesh = SubResource("BoxMesh_gtdja")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.51513e-09, 0.5, 2.02388)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("BoxShape3D_d0loj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-material_override = SubResource("StandardMaterial3D_gqy87")
-mesh = SubResource("BoxMesh_e80dg")
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("5_vih46")
+cell_size = Vector3(6, 2, 6)
+data = {
+"cells": PackedInt32Array(65535, 0, 1441804, 65535, 1, 1441804, 65534, 1, 1441796, 65534, 0, 1441804, 65534, 65534, 1441804, 65534, 65535, 1441804, 65535, 65534, 1441804, 65535, 65535, 1441804, 65533, 65534, 1048582, 65533, 65535, 1441804, 65533, 0, 1441804, 65533, 1, 1441804, 65534, 3, 1441804, 65535, 2, 1441804, 0, 2, 1441804, 65535, 3, 1441804, 0, 4, 1048589, 0, 3, 10, 1, 3, 1441804, 0, 1, 1441804, 0, 0, 1441804, 0, 65535, 1441804, 1, 65535, 1441792, 2, 65535, 1441804, 2, 0, 1441804, 2, 1, 1441804, 1, 1, 1048587, 65535, 65533, 1048576, 65535, 65532, 1441810, 0, 65533, 18, 1, 65534, 1441804, 3, 0, 1441804, 0, 65534, 1441804, 1, 65533, 18, 2, 65533, 1441810, 2, 65534, 1441804, 1, 0, 1441804, 65534, 65532, 1441810, 65533, 65532, 1441810, 65533, 65533, 1441810, 65532, 65534, 1441804, 65532, 65535, 1441804, 65531, 65535, 1441804, 65531, 0, 1441804, 65534, 65533, 1441810, 65532, 0, 1441804, 65532, 1, 9, 65532, 2, 1441799, 65532, 3, 1441804, 65532, 65533, 1441810, 65532, 65532, 18, 65531, 65534, 1441804, 65531, 1, 1441799, 65531, 2, 1441804, 65531, 3, 1441804, 65532, 4, 1441804, 65533, 4, 1441799, 65534, 4, 1048589, 65535, 4, 1048589, 1, 4, 1048589, 2, 4, 1048589, 2, 2, 1441804, 3, 1, 1441804, 3, 65535, 1441804, 3, 65533, 18, 3, 65532, 18, 2, 65531, 18, 2, 65532, 1441810, 4, 0, 1441804, 4, 1, 1441804, 4, 2, 1441804, 3, 2, 1441792, 2, 3, 1441804, 3, 65534, 1441804, 4, 65533, 18, 5, 65534, 1441810, 4, 65534, 1441804, 4, 65535, 1441804, 1, 65532, 1441810, 0, 65532, 1441810, 4, 65532, 18, 5, 65532, 18, 5, 65533, 18, 5, 65535, 1441810, 5, 0, 1048576, 5, 1, 1441810, 5, 2, 1441810, 4, 3, 1441804, 4, 4, 1441810, 3, 4, 1441804, 3, 3, 1441804, 5, 3, 1441810, 5, 4, 1441810, 65531, 4, 1441804, 65531, 65533, 18, 65531, 65532, 18, 1, 2, 1441804, 2, 7, 1441810, 1, 7, 1441810, 1, 10, 1048584, 65530, 3, 1441810, 65530, 2, 1441810, 65530, 4, 1441810, 0, 5, 1048583, 1, 5, 1048583, 2, 5, 1048583, 3, 5, 1048583, 4, 5, 1441810, 6, 0, 1441810, 6, 65535, 1441810, 6, 65534, 1441810, 65535, 5, 1048583, 0, 6, 1441810, 0, 7, 1441810, 2, 8, 1441810, 65533, 5, 1441804, 65532, 5, 1441804, 65531, 5, 1441804, 65534, 5, 1048583, 65533, 2, 9, 65534, 2, 12, 65533, 3, 13)
+}
+metadata/_editor_floor_ = Vector3(-2, 0, 0)
