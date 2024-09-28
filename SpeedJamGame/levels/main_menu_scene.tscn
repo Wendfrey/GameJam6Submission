@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2324syunmnas"]
+
+[ext_resource type="Script" path="res://levels/MainMenu3DScene.gd" id="1_fa1nj"]
+[ext_resource type="PackedScene" uid="uid://dcgxmduequatd" path="res://assets/obj/spaceship.glb" id="2_0ab5l"]
+
+[sub_resource type="Animation" id="Animation_0whti"]
+resource_name = "mainMenu"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0.668517, 0.990638, 1.9, 1, 0, 1.43457, 1.36842, 3, 1, 0, 2.47464, 1.03656, 4, 1, 0, 2.47464, 1.03656, 5.1, 1, 0, 2.54455, -0.0905803, 6.1, 1, 0, 1.18777, -0.817271, 7.1, 1, 0, 0.234907, -0.80336, 7.9, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ert2r"]
+_data = {
+"mainMenu": SubResource("Animation_0whti")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l2sci"]
+
+[sub_resource type="Sky" id="Sky_xvcln"]
+sky_material = SubResource("ProceduralSkyMaterial_l2sci")
+
+[sub_resource type="Environment" id="Environment_retld"]
+background_mode = 1
+background_color = Color(0.0588235, 0.054902, 0.152941, 1)
+sky = SubResource("Sky_xvcln")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.2
+tonemap_mode = 2
+
+[node name="MainMenuScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.391773)
+script = ExtResource("1_fa1nj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ert2r")
+}
+
+[node name="spaceship" parent="." instance=ExtResource("2_0ab5l")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.378002, -0.124397, 0.917409, 0, 0.990932, 0.134367, -0.925805, 0.0507909, -0.374575, 12.9373, 2.56059, -1.58029)
+projection = 1
+size = 12.619
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_retld")

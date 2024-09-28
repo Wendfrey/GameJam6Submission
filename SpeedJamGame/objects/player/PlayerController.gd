@@ -30,6 +30,8 @@ func _ready():
 		movement_func = mode_move_always_forward
 	else:
 		movement_func = mode_drag_forces
+		
+	$ModelHolder/spaceship/AnimationPlayer.play("idle")
 
 func _physics_process(delta):
 
@@ -37,7 +39,7 @@ func _physics_process(delta):
 		
 	var rotate_direction = Input.get_axis("rotate_left", "rotate_right")
 	
-	rotate_y(rotation_speed * rotate_direction * delta * (1 + current_speed/MAX_SPEED))
+	rotate_y(- rotation_speed * rotate_direction * delta * (1 + current_speed/MAX_SPEED))
 	if enable_movement:
 		movement_func.call()
 	var collision:KinematicCollision3D = move_and_collide(velocity * delta)
