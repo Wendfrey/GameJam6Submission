@@ -58,7 +58,6 @@ DEACCELERATION = 0.05
 movementType = 1
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_cu8vn")
 mesh = SubResource("QuadMesh_hhkm8")

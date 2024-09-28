@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var animation_tree : AnimationTree = $ModelHolder/spaceship/AnimationTree
+
 enum MoveType {
 	ALWAYS_FORWARD,
 	INERTIA_DRAG
@@ -45,6 +47,16 @@ func _physics_process(delta):
 	var collision:KinematicCollision3D = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()).limit_length(5)
+		
+	if rotate_direction>0:
+		animation_left(false);
+		animation_right(true);
+	elif rotate_direction<0:
+		animation_left(true);
+		animation_right(false);
+	else:
+		animation_left(false);
+		animation_right(false);
 
 var bracking_tween: Tween
 func _unhandled_input(event):
@@ -52,10 +64,11 @@ func _unhandled_input(event):
 		var temp_velocity = velocity.normalized()
 		var vectorRotation = Vector3(-PI/32, 0, 0)
 		brakingSound.play()
+		animation_brake(true)
 		bracking_tween = create_tween()
 		bracking_tween.tween_property(self, "enable_movement", false, 0)
 		bracking_tween.set_parallel()
-		bracking_tween.tween_property(self, "velocity", temp_velocity, 0.1)
+		bracking_tween.tween_property(self, "velocity", temp_velocity, 0.2)
 		bracking_tween.tween_property(modelHolder, "rotation", vectorRotation, 0.25).from(Vector3.ZERO)
 		bracking_tween.set_parallel(false)
 		bracking_tween.tween_interval(0.4)
@@ -63,6 +76,7 @@ func _unhandled_input(event):
 		bracking_tween.tween_property(modelHolder, "rotation", Vector3.ZERO, 0.15).from(vectorRotation)
 		bracking_tween.tween_property(self, "enable_movement", true, 0)
 		bracking_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		bracking_tween.tween_callback(animation_brake.bindv([false]))
 		bracking_tween.finished.connect(func ():
 			bracking_tween = null
 		)
@@ -90,3 +104,15 @@ func mode_move_always_forward():
 		
 func ring_interaction():
 	extraspeed_ring = 2
+	
+func animation_left(mode):
+	animation_tree["parameters/conditions/left"] = mode;
+	animation_tree["parameters/conditions/leftStop"] = !mode;
+	
+func animation_right(mode):
+	animation_tree["parameters/conditions/right"] = mode;
+	animation_tree["parameters/conditions/rightStop"] = !mode;
+	
+func animation_brake(mode):
+	animation_tree["parameters/conditions/brake"] = mode;
+	animation_tree["parameters/conditions/brakeStop"] = !mode;
