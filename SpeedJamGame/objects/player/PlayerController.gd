@@ -47,7 +47,7 @@ func _physics_process(delta):
 var bracking_tween: Tween
 func _unhandled_input(event):
 	if event.is_action_pressed("move_bracker") and not bracking_tween:
-		var temp_velocity = velocity.limit_length(5)
+		var temp_velocity = velocity.normalized() * (5 if velocity.length_squared() > 100 else (velocity.length() * 0.5))
 		var vectorRotation = Vector3(-PI/32, 0, 0)
 		brakingSound.play()
 		animation_brake(true)
@@ -58,11 +58,11 @@ func _unhandled_input(event):
 		bracking_tween.tween_property(modelHolder, "rotation", vectorRotation, 0.25).from(Vector3.ZERO)
 		bracking_tween.set_parallel(false)
 		bracking_tween.tween_interval(0.4)
-		bracking_tween.tween_property(self, "velocity", Vector3.ZERO, 0)
+		#bracking_tween.tween_property(self, "velocity", Vector3.ZERO, 0)
+		bracking_tween.tween_callback(animation_brake.bindv([false]))
 		bracking_tween.tween_property(modelHolder, "rotation", Vector3.ZERO, 0.15).from(vectorRotation)
 		bracking_tween.tween_property(self, "enable_movement", true, 0)
 		bracking_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		bracking_tween.tween_callback(animation_brake.bindv([false]))
 		bracking_tween.finished.connect(func ():
 			bracking_tween = null
 		)
@@ -80,3 +80,6 @@ func ring_interaction():
 	
 func animation_brake(mode):
 	animation_tree["parameters/conditions/brake"] = mode;
+
+func dash_tile_contact(dir: Vector3):
+	velocity = dir.normalized() * MAX_SPEED
