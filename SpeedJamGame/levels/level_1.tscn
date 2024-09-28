@@ -1,21 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpyv3kyb1130h"]
+[gd_scene load_steps=19 format=3 uid="uid://dpyv3kyb1130h"]
 
-[ext_resource type="Script" path="res://levels/TestWorld.gd" id="1_3us73"]
-[ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_b45io"]
-[ext_resource type="Texture2D" uid="uid://ixrsg0b42cm" path="res://textures/Green/texture_02.png" id="3_bdxhn"]
-[ext_resource type="Texture2D" uid="uid://dldsida6nlnaa" path="res://textures/Purple/texture_01.png" id="5_twd8q"]
-[ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="5_xppbo"]
-[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://door.tscn" id="6_vnhgm"]
+[ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_gu4nt"]
+[ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_srd63"]
+[ext_resource type="Texture2D" uid="uid://ixrsg0b42cm" path="res://textures/Green/texture_02.png" id="3_s0ow3"]
+[ext_resource type="Texture2D" uid="uid://dldsida6nlnaa" path="res://textures/Purple/texture_01.png" id="4_lhrtq"]
+[ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="5_w84x8"]
+[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://objects/door/door.tscn" id="6_txcyc"]
+[ext_resource type="MeshLibrary" uid="uid://3xknpmpm021k" path="res://assets/unfold/tileLibrary.tres" id="7_5iprr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l2sci"]
 
-[sub_resource type="Sky" id="Sky_kscsl"]
+[sub_resource type="Sky" id="Sky_43pun"]
 sky_material = SubResource("ProceduralSkyMaterial_l2sci")
 
 [sub_resource type="Environment" id="Environment_5y4c5"]
 background_mode = 1
 background_color = Color(0.0588235, 0.054902, 0.152941, 1)
-sky = SubResource("Sky_kscsl")
+sky = SubResource("Sky_43pun")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.0
@@ -23,7 +24,7 @@ ambient_light_energy = 0.2
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47raj"]
-albedo_texture = ExtResource("3_bdxhn")
+albedo_texture = ExtResource("3_s0ow3")
 albedo_texture_force_srgb = true
 uv1_scale = Vector3(0.125, 0.125, 0.125)
 uv1_triplanar = true
@@ -33,7 +34,7 @@ size = Vector2(72, 72)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bof37"]
-albedo_texture = ExtResource("5_twd8q")
+albedo_texture = ExtResource("4_lhrtq")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_nsit0"]
@@ -46,15 +47,16 @@ size = Vector3(89.7939, 3.09979, 3.01025)
 size = Vector3(4, 2, 36)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rofxa"]
-albedo_texture = ExtResource("5_twd8q")
+albedo_texture = ExtResource("4_lhrtq")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_gwnpo"]
 size = Vector3(4, 2, 36)
 
-[node name="FirstLevel" type="Node3D" node_paths=PackedStringArray("door")]
-script = ExtResource("1_3us73")
+[node name="Level_1" type="Node3D" node_paths=PackedStringArray("door")]
+script = ExtResource("1_gu4nt")
 door = NodePath("Door")
+level_name = "lvl1"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.251529, 0.96785, 0, -0.96785, -0.251529, 0, 11.8507, 0)
@@ -62,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, -0.251529, 0.96785, 0, -0.96785, -0.251529, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5y4c5")
 
-[node name="PlayerController" parent="." instance=ExtResource("2_b45io")]
+[node name="PlayerController" parent="." instance=ExtResource("2_srd63")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27.389, 1, -21.324)
 platform_on_leave = 2
 ACCELERATION = 0.2
@@ -146,17 +148,21 @@ mesh = SubResource("BoxMesh_gwnpo")
 
 [node name="Collectables" type="Node" parent="."]
 
-[node name="Collectable" parent="Collectables" instance=ExtResource("5_xppbo")]
+[node name="Collectable" parent="Collectables" instance=ExtResource("5_w84x8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2304, 1, 16.0169)
 
-[node name="Collectable2" parent="Collectables" instance=ExtResource("5_xppbo")]
+[node name="Collectable2" parent="Collectables" instance=ExtResource("5_w84x8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0376, 1, -7.78052)
 
-[node name="Collectable3" parent="Collectables" instance=ExtResource("5_xppbo")]
+[node name="Collectable3" parent="Collectables" instance=ExtResource("5_w84x8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9827, 1, 16.637)
 
-[node name="Collectable4" parent="Collectables" instance=ExtResource("5_xppbo")]
+[node name="Collectable4" parent="Collectables" instance=ExtResource("5_w84x8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1048, 1, -11.8945)
 
-[node name="Door" parent="." instance=ExtResource("6_vnhgm")]
+[node name="Door" parent="." instance=ExtResource("6_txcyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.503, 0, -21.1716)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("7_5iprr")
+cell_size = Vector3(6, 4, 6)

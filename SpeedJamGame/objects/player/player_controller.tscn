@@ -22,7 +22,7 @@ movementType = 1
 shape = SubResource("CylinderShape3D_io2ks")
 
 [node name="ModelHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.752904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.870851)
 
 [node name="spaceship" parent="ModelHolder" instance=ExtResource("2_t380r")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)

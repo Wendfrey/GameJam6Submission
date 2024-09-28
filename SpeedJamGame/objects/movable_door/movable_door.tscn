@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://f6qflxoi7avq"]
+
+[ext_resource type="Texture2D" uid="uid://ddhmmqblnh3o3" path="res://textures/Orange/texture_02.png" id="1_322i8"]
+[ext_resource type="Script" path="res://objects/movable_door/movable_door.gd" id="1_dalx4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2fqy"]
+size = Vector3(5, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ba7g"]
+albedo_texture = ExtResource("1_322i8")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_uqpfg"]
+material = SubResource("StandardMaterial3D_5ba7g")
+size = Vector3(5, 3, 1)
+
+[sub_resource type="Animation" id="Animation_4sxkg"]
+resource_name = "MoveDown"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 0, -0.128156, 0, 0.6, 1, 0, -0.73449, 0, 1, 1, 0, -3.1, 0)
+
+[sub_resource type="Animation" id="Animation_qjvpn"]
+resource_name = "MoveUp"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -3.1, 0, 0.5, 1, 0, -2.16233, 0, 0.8, 1, 0, -1.0573, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwdx"]
+_data = {
+"MoveDown": SubResource("Animation_4sxkg"),
+"MoveUp": SubResource("Animation_qjvpn")
+}
+
+[node name="MovableDoor" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1, 0)
+script = ExtResource("1_dalx4")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_x2fqy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_uqpfg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_ikwdx")
+}

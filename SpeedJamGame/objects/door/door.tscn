@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d0cpa7c3ve6st"]
 
-[ext_resource type="Script" path="res://Door.gd" id="1_huxyx"]
+[ext_resource type="Script" path="res://objects/door/Door.gd" id="1_huxyx"]
 [ext_resource type="Texture2D" uid="uid://ce11jjknitjbm" path="res://textures/Orange/texture_01.png" id="2_mty3h"]
 [ext_resource type="AudioStream" uid="uid://ckjf4r0qc27ds" path="res://objects/door/door_opening.wav" id="3_rnvyb"]
 
@@ -97,7 +97,7 @@ height = 0.1
 sides = 18
 
 [node name="IntersectorRight" type="CSGBox3D" parent="RightSideDoor"]
-transform = Transform3D(0.792215, 0, -0.610242, 0, 1, 0, 0.610242, 0, 0.792215, -2.35269, 0.0291114, 2.72239)
+transform = Transform3D(0.792215, 0, -0.610242, 0, 1, 0, 0.610242, 0, 0.792215, -0.904873, 0, 0.843184)
 operation = 1
 size = Vector3(5.10181, 1, 2.5)
 
@@ -109,7 +109,7 @@ height = 0.1
 sides = 18
 
 [node name="IntersectorLeft" type="CSGBox3D" parent="LeftSideDoor"]
-transform = Transform3D(0.792215, 0, -0.610242, 0, 1, 0, 0.610242, 0, 0.792215, -2.34741, 0, 2.71588)
+transform = Transform3D(0.792215, 0, -0.610242, 0, 1, 0, 0.610242, 0, 0.792215, -0.904873, 0, 0.843184)
 operation = 1
 size = Vector3(5.10181, 1, 2.5)
 

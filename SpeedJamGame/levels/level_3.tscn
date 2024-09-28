@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cipmtws8qbh7t"]
+
+[ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_daga6"]
+[ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_vm3th"]
+[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://objects/door/door.tscn" id="3_t7etb"]
+[ext_resource type="PackedScene" uid="uid://bjpryt1gm15go" path="res://objects/button/button.tscn" id="4_v55e2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l4tbl"]
+
+[sub_resource type="Sky" id="Sky_xvcln"]
+sky_material = SubResource("ProceduralSkyMaterial_l4tbl")
+
+[sub_resource type="Environment" id="Environment_ppwub"]
+background_mode = 1
+background_color = Color(0.0588235, 0.054902, 0.152941, 1)
+sky = SubResource("Sky_xvcln")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.2
+tonemap_mode = 2
+
+[node name="Level_3" type="Node3D" node_paths=PackedStringArray("door")]
+script = ExtResource("1_daga6")
+door = NodePath("Door")
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 48.2392, 44.4541)
+projection = 1
+current = true
+size = 40.0
+
+[node name="PlayerController" parent="." instance=ExtResource("2_vm3th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8198, 1, 14.1588)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.251529, 0.96785, 0, -0.96785, -0.251529, 0, 11.8507, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ppwub")
+
+[node name="Door" parent="." instance=ExtResource("3_t7etb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9838, 7.62939e-06, -54.7105)
+
+[node name="Button" parent="." instance=ExtResource("4_v55e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4152, 0, -23.2244)
