@@ -138,7 +138,6 @@ shape = SubResource("BoxShape3D_v60be")
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 48.2392, 44.4541)
 projection = 1
-current = true
 size = 40.0
 
 [node name="Door" parent="." instance=ExtResource("5_w7bf6")]
