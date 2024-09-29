@@ -13,5 +13,6 @@ func reset_anim():
 
 
 func _on_area_3d_body_entered(body):
-	emit_signal("player_reached_end")
-	body.velocity = Vector3.ZERO
+	if body is CharacterBody3D:
+		emit_signal("player_reached_end")
+		body.velocity = Vector3.ZERO
