@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/cameraMove.gd" id="4_o270q"]
 [ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="5_q4q4r"]
 [ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="6_r8lmo"]
-[ext_resource type="MeshLibrary" uid="uid://bn0f48kcikvne" path="res://assets/unfold/tilelibrary.tres" id="7_ke7c8"]
+[ext_resource type="MeshLibrary" uid="uid://j5l0lgaag70h" path="res://assets/unfold/tileLibrary.tres" id="7_ke7c8"]
 [ext_resource type="PackedScene" uid="uid://bdyd23msru0k2" path="res://objects/dash_field/tile_dash.tscn" id="8_8oh6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jlki"]

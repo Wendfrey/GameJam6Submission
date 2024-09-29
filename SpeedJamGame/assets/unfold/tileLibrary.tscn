@@ -2035,6 +2035,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_F"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall_F/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2051,6 +2052,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_I"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall_I/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2067,6 +2069,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_L"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall_L/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2083,6 +2086,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_P"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall_P/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2099,6 +2103,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2121,6 +2126,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_T"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tile_Wall_T/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2145,6 +2151,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_001"]
+collision_layer = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Tile_Wall_001/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2165,6 +2172,7 @@ surface_material_override/3 = ExtResource("4_2pdov")
 surface_material_override/4 = ExtResource("5_qcri5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tile_Wall_002"]
+collision_layer = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Tile_Wall_002/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)

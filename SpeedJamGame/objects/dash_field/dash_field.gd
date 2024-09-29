@@ -16,7 +16,8 @@ func _physics_process(delta):
 			time+=delta;
 
 func accelerate_player(body):
-	nodelist += [body]
+	if body is CharacterBody3D:
+		nodelist += [body]
 	
 func _on_area_3d_body_exited(body):
 	var index = nodelist.find(body)
