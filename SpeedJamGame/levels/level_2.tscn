@@ -20,7 +20,7 @@ sky = SubResource("Sky_kscsl")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.2
+ambient_light_energy = 0.15
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sgag"]
@@ -63,6 +63,7 @@ level_name = "lvl2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.251529, 0.96785, 0, -0.96785, -0.251529, 0, 11.8507, 0)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ulok6")
