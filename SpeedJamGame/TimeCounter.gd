@@ -22,7 +22,7 @@ func _update_text():
 	var updated_text = "%02d:%02d %03d" % [minutes, secs, diffTime]
 	text = updated_text
 	
-func stopTimer():
+func stopTimer() -> int:
 	visible = false
 	set_process(false)
 	return Time.get_ticks_msec() - timeStart

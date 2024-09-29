@@ -26,6 +26,5 @@ func player_collected_pickup(node:Node3D):
 	if openDoor:
 		door.play_anim()
 
-
 func _on_door_player_reached_end():
 	emit_signal("level_finished", level_name)

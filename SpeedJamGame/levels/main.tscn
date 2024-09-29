@@ -2,50 +2,14 @@
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_js0qf"]
 [ext_resource type="Script" path="res://TimeCounter.gd" id="2_1532q"]
-[ext_resource type="PackedScene" uid="uid://d2324syunmnas" path="res://levels/main_menu_scene.tscn" id="4_1puv6"]
+[ext_resource type="Script" path="res://levels/HighScoreMenu.gd" id="4_0eju4"]
 [ext_resource type="Script" path="res://MainMenuScript.gd" id="4_3581c"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_js0qf")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Transition" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FadeInOutTransition" type="ColorRect" parent="CanvasLayer/Transition"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TimerLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("2_1532q")
-
-[node name="BallWhereAbouts" type="Control" parent="CanvasLayer/Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="MainMenu" type="CanvasLayer" parent="."]
+process_mode = 1
 script = ExtResource("4_3581c")
 
 [node name="Control" type="Control" parent="MainMenu"]
@@ -89,10 +53,140 @@ focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
-[node name="World" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
+visible = false
 
-[node name="MainMenuScene" parent="World" instance=ExtResource("4_1puv6")]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("2_1532q")
+
+[node name="BallWhereAbouts" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+process_mode = 1
+visible = false
+
+[node name="Transition" type="Control" parent="TransitionLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FadeInOutTransition" type="ColorRect" parent="TransitionLayer/Transition"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="HighScoreLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("4_0eju4")
+
+[node name="LevelFinished" type="Control" parent="HighScoreLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="HighScoreLayer/LevelFinished"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = 149.0
+offset_right = 94.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryButton" type="Button" parent="HighScoreLayer/LevelFinished/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "RETRY"
+
+[node name="NextButton" type="Button" parent="HighScoreLayer/LevelFinished/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "NEXT"
+
+[node name="PanelContainer" type="PanelContainer" parent="HighScoreLayer/LevelFinished"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 31.0
+offset_right = -368.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScoreLayer/LevelFinished/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelPosition1" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "1. --:-- ---"
+horizontal_alignment = 1
+
+[node name="LabelPosition2" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "2. --:-- ---"
+horizontal_alignment = 1
+
+[node name="LabelPosition3" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "3. --:-- ---"
+horizontal_alignment = 1
+
+[node name="LabelPosition4" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "4. --:-- ---"
+horizontal_alignment = 1
+
+[node name="LabelPosition5" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "5. --:-- ---"
+horizontal_alignment = 1
+
+[node name="World" type="Node" parent="."]
+process_mode = 1
 
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
+[connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/RetryButton" to="." method="_on_retry_level"]
+[connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/NextButton" to="." method="_on_next_level"]
