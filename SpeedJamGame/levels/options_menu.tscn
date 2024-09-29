@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://px0cd34dsk52"]
+
+[ext_resource type="Script" path="res://OptionMenu.gd" id="1_vltws"]
+[ext_resource type="AudioStream" uid="uid://b3s5r8i404snl" path="res://assets/music/Juhani Junkala [Retro Game Music Pack] Ending.wav" id="2_di545"]
+[ext_resource type="AudioStream" uid="uid://ckjf4r0qc27ds" path="res://objects/door/door_opening.wav" id="3_kbjdu"]
+[ext_resource type="AudioStream" uid="uid://d1ap140a435i6" path="res://objects/player/sounds/737192__sadiquecat__distant-car-tire-screetch.wav" id="4_2d8ps"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ketyx"]
+streams_count = 2
+stream_0/stream = ExtResource("3_kbjdu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_2d8ps")
+stream_1/weight = 1.0
+
+[node name="OptionMenu" type="CanvasLayer" node_paths=PackedStringArray("focusChild")]
+process_mode = 3
+script = ExtResource("1_vltws")
+focusChild = NodePath("Control/ConfirmButton")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 363.0
+offset_top = 158.0
+offset_right = -364.0
+offset_bottom = -389.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(212, 50)
+theme_override_constants/separation = 20
+
+[node name="LabelContainers" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MasterLabel" type="Label" parent="Control/HBoxContainer/LabelContainers"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Master"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="Control/HBoxContainer/LabelContainers"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Music"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AudioLabel" type="Label" parent="Control/HBoxContainer/LabelContainers"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Audio"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SliderContainers" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterSlider" type="HSlider" parent="Control/HBoxContainer/SliderContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="Control/HBoxContainer/SliderContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.0
+
+[node name="AudioSlider" type="HSlider" parent="Control/HBoxContainer/SliderContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.0
+
+[node name="ConfirmButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 408.0
+offset_top = 350.0
+offset_right = -407.0
+offset_bottom = -248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "CONFIRM"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_di545")
+autoplay = true
+bus = &"Music"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ketyx")
+bus = &"Audio"
+
+[connection signal="value_changed" from="Control/HBoxContainer/SliderContainers/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Control/HBoxContainer/SliderContainers/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Control/HBoxContainer/SliderContainers/AudioSlider" to="." method="_on_audio_slider_drag_ended"]
+[connection signal="value_changed" from="Control/HBoxContainer/SliderContainers/AudioSlider" to="." method="_on_audio_slider_value_changed"]
+[connection signal="pressed" from="Control/ConfirmButton" to="." method="_on_confirm_button_pressed"]

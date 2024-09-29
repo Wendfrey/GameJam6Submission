@@ -10,6 +10,8 @@
 process_mode = 3
 script = ExtResource("1_pjjpi")
 
+[node name="OptionsMenu" type="CanvasLayer" parent="."]
+
 [node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
 visible = false
@@ -192,6 +194,9 @@ process_mode = 1
 
 [node name="PauseLayer" parent="." instance=ExtResource("5_n4g8y")]
 visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="MainMenu" method="_on_start_button_pressed"]

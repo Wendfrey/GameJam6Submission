@@ -1,5 +1,6 @@
 extends Node
 
+@onready var musicPlayer: AudioStreamPlayer = $MusicPlayer
 @onready var fadeinoutBackground:ColorRect = $TransitionLayer/Transition/FadeInOutTransition
 @export var saveFilepath = "user://highscore.dat"
 var fileStorage
@@ -13,6 +14,9 @@ func _ready():
 	
 	$MainMenu.visible = true
 	current_lvl = "main_menu"
+	
+	musicPlayer.stream = load("res://assets/music/Juhani Junkala [Retro Game Music Pack] Ending.wav")
+	musicPlayer.play()
 	load_scene(load("res://levels/main_menu_scene.tscn").instantiate())
 	
 func _on_game_load():
