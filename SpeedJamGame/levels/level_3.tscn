@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_daga6"]
 [ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_vm3th"]
-[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://objects/door/door.tscn" id="3_t7etb"]
-[ext_resource type="MeshLibrary" uid="uid://cxbkl3gdmbms5" path="res://assets/unfold/tileLibrary.tres" id="6_o20af"]
+[ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="3_t7etb"]
+[ext_resource type="MeshLibrary" uid="uid://b2fdbkpcw4xmd" path="res://assets/unfold/tileLibrary.tres" id="6_o20af"]
 [ext_resource type="PackedScene" uid="uid://cyc01qp6tmpbf" path="res://objects/teleporter/teleport.tscn" id="7_vapab"]
 [ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="8_nmme0"]
 

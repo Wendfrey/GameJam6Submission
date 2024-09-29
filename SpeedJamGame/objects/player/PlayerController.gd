@@ -24,6 +24,7 @@ var current_speed:float = 0
 var extraspeed_ring: float = 0
 var enable_movement: bool = true
 var smooth_rotation_anim:float = 0
+var pickup_amiation_ready: bool = false;
 
 func _ready():
 	$ModelHolder/spaceship/AnimationPlayer.play("idle")
@@ -33,7 +34,9 @@ func _physics_process(delta):
 		
 	var rotate_direction = Input.get_axis("rotate_left", "rotate_right")
 	smooth_rotation_anim = move_toward(smooth_rotation_anim, rotate_direction, 3 * delta)
-	animation_tree["parameters/idle 2/blend_position"] = smooth_rotation_anim;
+	animation_tree["parameters/idle/blend_position"] = smooth_rotation_anim;
+	animation_tree["parameters/conditions/pickup"] = pickup_amiation_ready;
+	pickup_amiation_ready = false;
 	
 	rotate_y(- rotation_speed * rotate_direction * delta * (1 + current_speed/MAX_SPEED))
 	if enable_movement:

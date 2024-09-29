@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2324syunmnas"]
+[gd_scene load_steps=8 format=3 uid="uid://4dqb7pkneb6l"]
 
 [ext_resource type="Script" path="res://levels/MainMenu3DScene.gd" id="1_fa1nj"]
 [ext_resource type="PackedScene" uid="uid://dcgxmduequatd" path="res://assets/obj/spaceship.glb" id="2_0ab5l"]
