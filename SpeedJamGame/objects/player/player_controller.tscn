@@ -482,6 +482,18 @@ tracks/21/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("trashProp:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_hxrbs"]
 resource_name = "Pickup"
@@ -798,6 +810,18 @@ tracks/21/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("treasure:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.1, 2.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_ivswq"]
 resource_name = "TurnLeftEnd"
@@ -1904,30 +1928,6 @@ tracks/21/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Armature/Skeleton3D/ParticlesRightHand:emitting")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Armature/Skeleton3D/ParticlesLeftHand:emitting")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_teyek"]
 resource_name = "brakeStart"
@@ -2086,30 +2086,6 @@ tracks/21/path = NodePath("Armature/Skeleton3D:FingerPoint.R")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Armature/Skeleton3D/ParticlesRightHand:emitting")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Armature/Skeleton3D/ParticlesLeftHand:emitting")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_y4llq"]
 resource_name = "dash"
@@ -2586,12 +2562,12 @@ tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 1.92957e-08, -3.44607e-08, 0.157397, 0.987535)
 
-[sub_resource type="Animation" id="Animation_grcpn"]
+[sub_resource type="Animation" id="Animation_o0kuw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/ParticlesRightHand:emitting")
+tracks/0/path = NodePath("trashProp:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2603,7 +2579,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D/ParticlesLeftHand:emitting")
+tracks/1/path = NodePath("treasure:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2617,7 +2593,7 @@ tracks/1/keys = {
 _data = {
 "DiscardTrash": SubResource("Animation_81d3k"),
 "Pickup": SubResource("Animation_hxrbs"),
-"RESET": SubResource("Animation_grcpn"),
+"RESET": SubResource("Animation_o0kuw"),
 "StoreTreasure": SubResource("Animation_14fhr"),
 "TurnLeftEnd": SubResource("Animation_ivswq"),
 "TurnLeftStand": SubResource("Animation_y2222"),
@@ -2752,7 +2728,7 @@ states/dash/position = Vector2(525, 18)
 states/idle/node = SubResource("AnimationNodeBlendSpace1D_ondca")
 states/idle/position = Vector2(385, 106)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gwwuk"), "idle", "dash", SubResource("AnimationNodeStateMachineTransition_q6wyb"), "dash", "idle", SubResource("AnimationNodeStateMachineTransition_mw6or"), "idle", "brakeStart", SubResource("AnimationNodeStateMachineTransition_4h2j8"), "brakeStart", "brakeEnd", SubResource("AnimationNodeStateMachineTransition_m0ysf"), "brakeEnd", "idle", SubResource("AnimationNodeStateMachineTransition_q7m6o"), "idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_3yas7"), "BlendTree", "idle", SubResource("AnimationNodeStateMachineTransition_spjp5"), "BlendTree", "Pickup", SubResource("AnimationNodeStateMachineTransition_erapc"), "Pickup", "BlendTree", SubResource("AnimationNodeStateMachineTransition_7iyur")]
-graph_offset = Vector2(112, 23)
+graph_offset = Vector2(110, 56)
 
 [node name="PlayerController" type="CharacterBody3D"]
 collision_layer = 3
@@ -2775,7 +2751,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.870851)
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="trashProp" type="MeshInstance3D" parent="ModelHolder/spaceship"]
-transform = Transform3D(0.278744, -0.125002, 0.952196, -0.930722, 0.209277, 0.299932, -0.236765, -0.969834, -0.0580074, -14.4636, -1.87884, -9.31427)
+transform = Transform3D(0.278744, -0.125002, 0.952196, -0.930722, 0.209277, 0.299932, -0.236765, -0.969833, -0.0580074, -14.4636, -1.87884, -9.31427)
 visible = false
 mesh = SubResource("ArrayMesh_4e2rq")
 skeleton = NodePath("")
@@ -2794,29 +2770,29 @@ bones/0/name = "Base"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-0.999937, -4.65661e-10, -0.01122, -0.01122, 5.96046e-08, 0.999937, 4.65661e-10, 1, -1.19209e-07, 0, 0, -1)
 bones/0/enabled = true
-bones/0/position = Vector3(0.0891535, -0.0175432, -1)
-bones/0/rotation = Quaternion(-0.0195633, 0.706836, 0.706836, -0.0195633)
+bones/0/position = Vector3(0.113526, -0.0206237, -1)
+bones/0/rotation = Quaternion(-0.0211448, 0.706791, 0.706791, -0.0211448)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Shoulder.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(-0.301432, -0.953421, -0.01122, 0.953481, -0.301452, 0, -0.00338228, -0.010698, 0.999937, -6.25193e-08, 1.41407, -7.01509e-10)
 bones/1/enabled = true
 bones/1/position = Vector3(-6.25193e-08, 1.41407, -7.01509e-10)
-bones/1/rotation = Quaternion(-0.002221, -0.000170006, 0.80667, 0.590998)
+bones/1/rotation = Quaternion(-0.00829204, -0.000555985, 0.806633, 0.590994)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "LowerArm.L"
 bones/2/parent = 1
 bones/2/rest = Transform3D(0.995995, -0.0894036, -4.84415e-10, 0.0894036, 0.995995, -1.65533e-09, 6.30468e-10, 1.6054e-09, 1, 4.58016e-09, 1.3736, -2.37653e-17)
 bones/2/enabled = true
 bones/2/position = Vector3(4.58016e-09, 1.3736, -2.37653e-17)
-bones/2/rotation = Quaternion(1.64599e-09, -6.77634e-10, 0.0519918, 0.998648)
+bones/2/rotation = Quaternion(7.24595e-10, -2.17421e-10, 0.0457033, 0.998955)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "UpperArm.L"
 bones/3/parent = 2
 bones/3/rest = Transform3D(-0.190118, 0.981761, -1.88621e-09, -0.981761, -0.190118, 2.23408e-09, 1.83473e-09, 2.27654e-09, 1, 5.96046e-08, 2.01577, 2.22045e-16)
 bones/3/enabled = true
 bones/3/position = Vector3(5.96046e-08, 2.01577, 2.22045e-16)
-bones/3/rotation = Quaternion(1.23967e-10, -1.35152e-09, -0.77139, 0.636362)
+bones/3/rotation = Quaternion(4.54228e-10, -1.01233e-09, -0.763369, 0.645962)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Hand.001.L"
 bones/4/parent = 3
@@ -2830,7 +2806,7 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(-0.681896, -0.731449, -2.98023e-08, -0.50117, 0.467219, 0.728378, -0.532771, 0.496679, -0.685175, 7.50198e-08, 0.520015, 8.8549e-09)
 bones/5/enabled = true
 bones/5/position = Vector3(7.50198e-08, 0.520015, 8.8549e-09)
-bones/5/rotation = Quaternion(-0.420689, 0.815848, 0.352632, 0.181833)
+bones/5/rotation = Quaternion(-0.445536, 0.802549, 0.346884, 0.192573)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "FingerPoint.L"
 bones/6/parent = 5
@@ -2872,28 +2848,28 @@ bones/11/parent = 10
 bones/11/rest = Transform3D(0.80471, -0.593668, -9.46297e-10, 0.593668, 0.80471, -1.49347e-09, 1.64812e-09, 6.40027e-10, 1, 2.98023e-08, 0.5371, -8.32667e-17)
 bones/11/enabled = true
 bones/11/position = Vector3(2.98023e-08, 0.5371, -8.32667e-17)
-bones/11/rotation = Quaternion(1.79208e-09, -1.06283e-09, 0.358269, 0.933618)
+bones/11/rotation = Quaternion(1.31965e-09, -7.50251e-10, 0.441749, 0.897139)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "Shoulder.R"
 bones/12/parent = 0
 bones/12/rest = Transform3D(-0.301432, 0.953421, -0.01122, -0.953481, -0.301452, -9.31323e-10, -0.00338228, 0.010698, 0.999937, -1.54362e-14, 1.41407, -1.11022e-16)
 bones/12/enabled = true
 bones/12/position = Vector3(-1.54362e-14, 1.41407, -1.11022e-16)
-bones/12/rotation = Quaternion(0.00680456, -0.00642632, -0.806644, 0.590963)
+bones/12/rotation = Quaternion(0.000758894, -0.006075, -0.806676, 0.590963)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "LowerArm.R"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0.995995, 0.0894035, -9.44054e-10, -0.0894036, 0.995995, 1.65479e-09, 1.08822e-09, -1.56376e-09, 1, -2.52222e-08, 1.3736, 4.77557e-17)
 bones/13/enabled = true
 bones/13/position = Vector3(-2.52222e-08, 1.3736, 4.77557e-17)
-bones/13/rotation = Quaternion(-8.66587e-10, -4.08616e-10, -0.0519918, 0.998648)
+bones/13/rotation = Quaternion(-8.65507e-10, -3.38459e-10, -0.0457033, 0.998955)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "UpperArm.R"
 bones/14/parent = 13
 bones/14/rest = Transform3D(-0.190118, -0.981761, -1.86411e-09, 0.981761, -0.190118, -2.3794e-09, 1.9816e-09, -2.28248e-09, 1, -5.96046e-08, 2.01577, 0)
 bones/14/enabled = true
 bones/14/position = Vector3(-5.96046e-08, 2.01577, 0)
-bones/14/rotation = Quaternion(-6.37772e-12, -1.50155e-09, 0.77139, 0.636362)
+bones/14/rotation = Quaternion(1.47943e-09, -1.3928e-09, 0.763369, 0.645962)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "Hand.001.R"
 bones/15/parent = 14
@@ -2907,7 +2883,7 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(-0.681896, 0.731449, 2.98023e-08, 0.50117, 0.467219, 0.728378, 0.532771, 0.496679, -0.685175, -1.49403e-07, 0.520015, 5.00108e-08)
 bones/16/enabled = true
 bones/16/position = Vector3(-1.49403e-07, 0.520015, 5.00108e-08)
-bones/16/rotation = Quaternion(0.423874, 0.814198, 0.351919, -0.183209)
+bones/16/rotation = Quaternion(0.445536, 0.802549, 0.346884, -0.192573)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "FingerPoint.R"
 bones/17/parent = 16
@@ -2949,7 +2925,7 @@ bones/22/parent = 21
 bones/22/rest = Transform3D(0.80471, 0.593668, -1.03413e-09, -0.593668, 0.80471, 1.5071e-09, 1.7269e-09, -5.9885e-10, 1, 1.19209e-07, 0.5371, 4.71845e-16)
 bones/22/enabled = true
 bones/22/position = Vector3(1.19209e-07, 0.5371, 4.71845e-16)
-bones/22/rotation = Quaternion(2.25766e-10, -7.93182e-10, -0.358269, 0.933618)
+bones/22/rotation = Quaternion(-5.16943e-10, -2.2925e-09, -0.441749, 0.897139)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/name = "Box"
 bones/23/parent = -1
@@ -2971,23 +2947,23 @@ mesh = SubResource("ArrayMesh_678b4")
 skin = SubResource("Skin_ftbb2")
 
 [node name="ParticlesLeftHand" type="CPUParticles3D" parent="ModelHolder/spaceship/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.39921, 0.903658)
+transform = Transform3D(-0.99434, 0, 0.106246, 0, 1, 0, -0.106246, 0, -0.99434, 2.41809, -1.17804, 0.305773)
 emitting = false
 amount = 5
 lifetime = 0.2
 mesh = SubResource("PlaneMesh_p4qhd")
-direction = Vector3(0, 1, -1)
+direction = Vector3(0, 1, 1)
 spread = 30.0
 initial_velocity_min = 3.0
 initial_velocity_max = 5.0
 
 [node name="ParticlesRightHand" type="CPUParticles3D" parent="ModelHolder/spaceship/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.32447, 0.73403)
+transform = Transform3D(-0.99434, 0, 0.106246, 0, 1, 0, -0.106246, 0, -0.99434, -1.58089, -1.17804, -0.121523)
 emitting = false
 amount = 5
 lifetime = 0.2
 mesh = SubResource("PlaneMesh_p4qhd")
-direction = Vector3(0, 1, -1)
+direction = Vector3(0, 1, 1)
 spread = 30.0
 initial_velocity_min = 3.0
 initial_velocity_max = 5.0
@@ -3012,3 +2988,9 @@ parameters/idle/blend_position = 0.0
 
 [node name="BrakingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_svmxw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.46448)
+light_energy = 5.0
+light_size = 1.0
+spot_range = 30.0
