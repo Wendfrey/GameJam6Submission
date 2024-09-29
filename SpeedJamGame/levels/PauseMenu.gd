@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends "res://levels/UIAutoFocus.gd"
 
 signal level_restart
 signal return_menu

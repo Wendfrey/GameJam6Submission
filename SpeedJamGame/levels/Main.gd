@@ -11,6 +11,7 @@ func _ready():
 	recordData = load("res://HighscoreData.gd").new(3, 5)
 	recordData.set_data(fileStorage.read_file())
 	
+	$MainMenu.visible = true
 	current_lvl = "main_menu"
 	load_scene(load("res://levels/main_menu_scene.tscn").instantiate())
 	

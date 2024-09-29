@@ -10,9 +10,11 @@
 process_mode = 3
 script = ExtResource("1_pjjpi")
 
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
+visible = false
 script = ExtResource("2_huarr")
+focusChild = NodePath("Control/StartButton")
 
 [node name="Control" type="Control" parent="MainMenu"]
 layout_mode = 3
@@ -98,10 +100,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="HighScoreLayer" type="CanvasLayer" parent="."]
+[node name="HighScoreLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 2
 visible = false
 script = ExtResource("4_jp8c3")
+focusChild = NodePath("LevelFinished/ButtonContainer/NextButton")
 
 [node name="LevelFinished" type="Control" parent="HighScoreLayer"]
 layout_mode = 3

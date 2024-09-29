@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends "res://levels/UIAutoFocus.gd"
 
 signal start_game
 
