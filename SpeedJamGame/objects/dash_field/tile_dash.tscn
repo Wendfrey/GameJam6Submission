@@ -112,5 +112,11 @@ script = ExtResource("4_ttyfp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_fs32l")
 
+[node name="glows" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+light_color = Color(1, 0.803922, 0.533333, 1)
+light_energy = 2.0
+omni_range = 15.0
+
 [connection signal="body_entered" from="Area3D" to="." method="accelerate_player"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
