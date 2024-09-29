@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="Speed Jam Game"
-run/main_scene="res://levels/main.tscn"
+run/main_scene="res://levels/RootMain.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-GlobalVars="*res://globalVars.gd"
 
 [dotnet]
 

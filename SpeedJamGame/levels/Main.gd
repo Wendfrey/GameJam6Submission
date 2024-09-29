@@ -25,21 +25,19 @@ func _on_main_menu_start_game():
 func _on_level_finished(lvl_name):
 	get_tree().paused = true
 	
-	var timeTotal:int = $CanvasLayer/Control/TimerLabel.stopTimer()
 	var lvl = 0
 	match current_lvl:
 		"lvl1": lvl = 1
 		"lvl2": lvl = 2
 		"lvl3": lvl = 3
 	if lvl > 0:
-		$CanvasLayer.visible = false
+		var timeTotal:int = stopTimer()
 		recordData.set_record(lvl, timeTotal)
 		fileStorage.write_file(recordData.convert_data())
 		var level_records = recordData.get_records(lvl)
 		$HighScoreLayer.visible = true
 		$HighScoreLayer.showData(level_records)
 	#_on_next_level()
-		
 
 func load_scene(scene:Node3D):
 	$World.add_child(scene)
@@ -51,7 +49,11 @@ func load_scene(scene:Node3D):
 
 func goto_main_menu():
 	current_lvl = "main_menu"
-	transition("res://levels/main_menu_scene.tscn", func(): $MainMenu.visible = true)
+	transition("res://levels/main_menu_scene.tscn", func(): 
+		if get_tree().paused:
+			get_tree().paused = false
+		$MainMenu.visible = true
+		)
 	
 func goto_lvl1():
 	current_lvl = "lvl1"
@@ -66,8 +68,8 @@ func goto_lvl3():
 	transition("res://levels/level_3.tscn", on_level_loaded)
 
 func on_level_loaded():
-	$CanvasLayer.visible = true
-	$CanvasLayer/Control/TimerLabel.startTimer()
+	$CounterLayer.visible = true
+	startTimer()
 
 func transition(resourcePath: String, on_finish_tween: Callable = func():pass):
 	$TransitionLayer.visible = true
@@ -87,6 +89,13 @@ func transition(resourcePath: String, on_finish_tween: Callable = func():pass):
 		on_finish_tween.call()
 	)
 
+func stopTimer() -> int:
+	$CounterLayer.visible = false
+	return $CounterLayer/Control/TimerLabel.stopTimer()
+
+func startTimer() -> void:
+	$CounterLayer/Control/TimerLabel.startTimer()
+
 func _on_next_level():
 	$HighScoreLayer.visible = false
 	match (current_lvl):
@@ -102,3 +111,18 @@ func _on_retry_level():
 		"lvl2": goto_lvl2()
 		"lvl3": goto_lvl3()
 		_: print("NO MATCH")
+
+
+func _on_pause_menu_level_restart():
+	stopTimer()
+	_on_retry_level()
+
+
+func _on_pause_menu_return_menu():
+	stopTimer()
+	goto_main_menu()
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel") and current_lvl != "main_menu":
+		get_tree().paused = not get_tree().paused
+		$PauseLayer.visible = get_tree().paused
