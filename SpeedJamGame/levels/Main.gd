@@ -152,3 +152,13 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and current_lvl != "main_menu":
 		get_tree().paused = not get_tree().paused
 		$PauseLayer.visible = get_tree().paused
+		
+var optionsLatestCanvas: CanvasLayer
+func _signals_open_options(caller):
+	print(caller)
+	optionsLatestCanvas = get_node(caller)
+	optionsLatestCanvas.visible = false
+	$OptionsMenu.visible = true
+
+func _on_options_menu_exit():
+	optionsLatestCanvas.visible = true

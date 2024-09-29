@@ -50,6 +50,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "RESTART"
 
+[node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
 [node name="ReturnMenu" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -57,4 +62,5 @@ text = "RETURN MENU"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ReturnMenu" to="." method="_on_return_menu_pressed"]
