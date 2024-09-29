@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends "res://levels/UIAutoFocus.gd"
 
 signal next_level
 signal retry_level

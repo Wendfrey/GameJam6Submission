@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfm0x8errofts"]
+[gd_scene load_steps=6 format=3 uid="uid://dfm0x8errofts"]
 
-[ext_resource type="Script" path="res://levels/Main.gd" id="1_js0qf"]
-[ext_resource type="Script" path="res://TimeCounter.gd" id="2_1532q"]
-[ext_resource type="Script" path="res://levels/HighScoreMenu.gd" id="4_0eju4"]
-[ext_resource type="Script" path="res://MainMenuScript.gd" id="4_3581c"]
+[ext_resource type="Script" path="res://levels/Main.gd" id="1_pjjpi"]
+[ext_resource type="Script" path="res://levels/MainMenuScript.gd" id="2_huarr"]
+[ext_resource type="Script" path="res://TimeCounter.gd" id="3_7chjf"]
+[ext_resource type="Script" path="res://levels/HighScoreMenu.gd" id="4_jp8c3"]
+[ext_resource type="PackedScene" uid="uid://dm0q1uh086kwt" path="res://levels/pause_menu.tscn" id="5_n4g8y"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_js0qf")
+process_mode = 3
+script = ExtResource("1_pjjpi")
 
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
-script = ExtResource("4_3581c")
+visible = false
+script = ExtResource("2_huarr")
+focusChild = NodePath("Control/StartButton")
 
 [node name="Control" type="Control" parent="MainMenu"]
 layout_mode = 3
@@ -53,23 +57,23 @@ focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CounterLayer" type="CanvasLayer" parent="."]
 process_mode = 1
 visible = false
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CounterLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer/Control"]
+[node name="TimerLabel" type="Label" parent="CounterLayer/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("2_1532q")
+script = ExtResource("3_7chjf")
 
-[node name="BallWhereAbouts" type="Control" parent="CanvasLayer/Control"]
+[node name="BallWhereAbouts" type="Control" parent="CounterLayer/Control"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -96,10 +100,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="HighScoreLayer" type="CanvasLayer" parent="."]
+[node name="HighScoreLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 2
 visible = false
-script = ExtResource("4_0eju4")
+script = ExtResource("4_jp8c3")
+focusChild = NodePath("LevelFinished/ButtonContainer/NextButton")
 
 [node name="LevelFinished" type="Control" parent="HighScoreLayer"]
 layout_mode = 3
@@ -185,8 +190,13 @@ horizontal_alignment = 1
 [node name="World" type="Node" parent="."]
 process_mode = 1
 
+[node name="PauseLayer" parent="." instance=ExtResource("5_n4g8y")]
+visible = false
+
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="pressed" from="MainMenu/Control/StartButton" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
 [connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/RetryButton" to="." method="_on_retry_level"]
 [connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/NextButton" to="." method="_on_next_level"]
+[connection signal="level_restart" from="PauseLayer" to="." method="_on_pause_menu_level_restart"]
+[connection signal="return_menu" from="PauseLayer" to="." method="_on_pause_menu_return_menu"]
