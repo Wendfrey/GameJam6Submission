@@ -143,3 +143,6 @@ Destiny = NodePath("../TP01")
 
 [node name="Tile_Dash" parent="." instance=ExtResource("8_25d2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.53834, 9.64817, 0.00320238, 12.9071)
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null

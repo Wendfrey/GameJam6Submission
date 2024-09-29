@@ -4,13 +4,13 @@
 [ext_resource type="Material" uid="uid://dpqlskxjcnwry" path="res://assets/materials/Silver.tres" id="2_dlwqe"]
 [ext_resource type="Material" uid="uid://cassyisehcpau" path="res://assets/materials/WallPink.tres" id="3_8tcwo"]
 [ext_resource type="Material" uid="uid://br1twx4e3qwqc" path="res://assets/materials/WallWhite.tres" id="4_2pdov"]
-[ext_resource type="Material" uid="uid://3320hxi82cpe" path="res://assets/materials/TPBase.tres" id="4_q1xjx"]
+[ext_resource type="Material" path="res://assets/materials/TPBase.tres" id="4_q1xjx"]
 [ext_resource type="Material" uid="uid://2e4sudsb36fi" path="res://assets/materials/WallBlack.tres" id="5_qcri5"]
-[ext_resource type="Material" uid="uid://dvjmikx8srqv4" path="res://assets/materials/TPLight1.tres" id="5_wciif"]
+[ext_resource type="Material" path="res://assets/materials/TPLight1.tres" id="5_wciif"]
 [ext_resource type="Material" uid="uid://d06s8blx54fnw" path="res://assets/materials/FloorDark.tres" id="6_bjqmk"]
-[ext_resource type="Material" uid="uid://cwlcxkp1th67j" path="res://assets/materials/TPLight2.tres" id="6_s4yc1"]
-[ext_resource type="Material" uid="uid://bbq4eqfiuc1iw" path="res://assets/materials/TPLight3.tres" id="7_l2s1o"]
-[ext_resource type="Material" uid="uid://bw44x7ny1djys" path="res://assets/materials/SlowGround.tres" id="8_tnl6p"]
+[ext_resource type="Material" path="res://assets/materials/TPLight2.tres" id="6_s4yc1"]
+[ext_resource type="Material" path="res://assets/materials/TPLight3.tres" id="7_l2s1o"]
+[ext_resource type="Material" path="res://assets/materials/SlowGround.tres" id="8_tnl6p"]
 [ext_resource type="PackedScene" uid="uid://bdyd23msru0k2" path="res://objects/dash_field/tile_dash.tscn" id="9_mwnvf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiwbs"]
@@ -1462,6 +1462,9 @@ surface_material_override/1 = ExtResource("8_tnl6p")
 surface_material_override/2 = ExtResource("2_dlwqe")
 
 [node name="Tile_Dash" parent="." instance=ExtResource("9_mwnvf")]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
 
 [node name="Tile_Wall_F" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
