@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_pjjpi"]
 [ext_resource type="Script" path="res://levels/MainMenuScript.gd" id="2_huarr"]
 [ext_resource type="Script" path="res://TimeCounter.gd" id="3_7chjf"]
-[ext_resource type="Script" path="res://levels/HighScoreMenu.gd" id="4_jp8c3"]
+[ext_resource type="PackedScene" uid="uid://bslu44suymbxb" path="res://levels/high_score_layer_scene.tscn" id="4_estts"]
 [ext_resource type="PackedScene" uid="uid://dm0q1uh086kwt" path="res://levels/pause_menu.tscn" id="5_n4g8y"]
 [ext_resource type="PackedScene" uid="uid://px0cd34dsk52" path="res://levels/options_menu.tscn" id="6_3cbrp"]
 
@@ -109,91 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="HighScoreLayer" type="CanvasLayer" parent="."]
-process_mode = 2
-visible = false
-script = ExtResource("4_jp8c3")
-
-[node name="LevelFinished" type="Control" parent="HighScoreLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ButtonContainer" type="HBoxContainer" parent="HighScoreLayer/LevelFinished"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = 149.0
-offset_right = 94.0
-offset_bottom = 199.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RetryButton" type="Button" parent="HighScoreLayer/LevelFinished/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-text = "RETRY"
-
-[node name="NextButton" type="Button" parent="HighScoreLayer/LevelFinished/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 30
-text = "NEXT"
-
-[node name="PanelContainer" type="PanelContainer" parent="HighScoreLayer/LevelFinished"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 360.0
-offset_top = 31.0
-offset_right = -368.0
-offset_bottom = -203.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HighScoreLayer/LevelFinished/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="LabelPosition1" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "1. --:-- ---"
-horizontal_alignment = 1
-
-[node name="LabelPosition2" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "2. --:-- ---"
-horizontal_alignment = 1
-
-[node name="LabelPosition3" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "3. --:-- ---"
-horizontal_alignment = 1
-
-[node name="LabelPosition4" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "4. --:-- ---"
-horizontal_alignment = 1
-
-[node name="LabelPosition5" type="Label" parent="HighScoreLayer/LevelFinished/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "5. --:-- ---"
-horizontal_alignment = 1
+[node name="HighScoreLayer" parent="." instance=ExtResource("4_estts")]
 
 [node name="World" type="Node" parent="."]
 process_mode = 1
@@ -211,8 +127,8 @@ bus = &"Music"
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/StartButton" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/OptionsButton" to="." method="_signals_open_options" binds= ["MainMenu"]]
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
-[connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/RetryButton" to="." method="_on_retry_level"]
-[connection signal="button_down" from="HighScoreLayer/LevelFinished/ButtonContainer/NextButton" to="." method="_on_next_level"]
+[connection signal="next_level" from="HighScoreLayer" to="." method="_on_next_level"]
+[connection signal="retry_level" from="HighScoreLayer" to="." method="_on_retry_level"]
 [connection signal="level_restart" from="PauseLayer" to="." method="_on_pause_menu_level_restart"]
 [connection signal="open_options" from="PauseLayer" to="." method="_signals_open_options" binds= ["PauseLayer"]]
 [connection signal="return_menu" from="PauseLayer" to="." method="_on_pause_menu_return_menu"]

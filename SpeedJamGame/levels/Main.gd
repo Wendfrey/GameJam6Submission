@@ -41,11 +41,11 @@ func _on_level_finished(lvl_name):
 		"lvl10": lvl = 10
 	if lvl > 0:
 		var timeTotal:int = stopTimer()
-		recordData.set_record(lvl, timeTotal)
+		var rIndex = recordData.set_record(lvl, timeTotal)
 		fileStorage.write_file(recordData.convert_data())
 		var level_records = recordData.get_records(lvl)
 		$HighScoreLayer.visible = true
-		$HighScoreLayer.showData(level_records)
+		$HighScoreLayer.showData(level_records, rIndex, timeTotal)
 	#_on_next_level()
 
 func load_scene(scene:Node3D):
