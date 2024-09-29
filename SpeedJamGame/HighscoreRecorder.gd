@@ -18,8 +18,8 @@ func read_file() -> PackedInt64Array:
 
 func write_file(input_data: PackedInt64Array):
 	var fAccess:FileAccess = FileAccess.open(filepath, FileAccess.WRITE)
-	print(fAccess.get_open_error())
 	fAccess.store_buffer(input_data.to_byte_array())
+	print(fAccess.get_error())
 	fAccess.flush()
 	fAccess.close()
 	

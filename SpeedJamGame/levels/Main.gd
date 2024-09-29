@@ -29,8 +29,8 @@ func _on_level_finished(lvl_name):
 	var lvl = 0
 	match current_lvl:
 		"lvl1": lvl = 1
-		"lvl1": lvl = 2
-		"lvl1": lvl = 3
+		"lvl2": lvl = 2
+		"lvl3": lvl = 3
 	if lvl > 0:
 		$CanvasLayer.visible = false
 		recordData.set_record(lvl, timeTotal)
