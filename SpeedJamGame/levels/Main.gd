@@ -1,5 +1,6 @@
 extends Node
 
+@onready var musicPlayer: AudioStreamPlayer = $MusicPlayer
 @onready var fadeinoutBackground:ColorRect = $TransitionLayer/Transition/FadeInOutTransition
 @export var saveFilepath = "user://highscore.dat"
 var fileStorage
@@ -13,6 +14,9 @@ func _ready():
 	
 	$MainMenu.visible = true
 	current_lvl = "main_menu"
+	
+	musicPlayer.stream = load("res://assets/music/Juhani Junkala [Retro Game Music Pack] Ending.wav")
+	musicPlayer.play()
 	load_scene(load("res://levels/main_menu_scene.tscn").instantiate())
 	
 func _on_game_load():
@@ -155,3 +159,13 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and current_lvl != "main_menu":
 		get_tree().paused = not get_tree().paused
 		$PauseLayer.visible = get_tree().paused
+		
+var optionsLatestCanvas: CanvasLayer
+func _signals_open_options(caller):
+	print(caller)
+	optionsLatestCanvas = get_node(caller)
+	optionsLatestCanvas.visible = false
+	$OptionsMenu.visible = true
+
+func _on_options_menu_exit():
+	optionsLatestCanvas.visible = true
