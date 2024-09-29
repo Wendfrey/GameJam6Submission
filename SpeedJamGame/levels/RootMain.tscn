@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfm0x8errofts"]
+[gd_scene load_steps=6 format=3 uid="uid://44wkdin5nv1w"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_pjjpi"]
 [ext_resource type="Script" path="res://levels/MainMenuScript.gd" id="2_huarr"]
 [ext_resource type="Script" path="res://TimeCounter.gd" id="3_7chjf"]
 [ext_resource type="Script" path="res://levels/HighScoreMenu.gd" id="4_jp8c3"]
-[ext_resource type="PackedScene" uid="uid://dm0q1uh086kwt" path="res://levels/pause_menu.tscn" id="5_n4g8y"]
+[ext_resource type="PackedScene" path="res://levels/pause_menu.tscn" id="5_n4g8y"]
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -100,11 +100,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="HighScoreLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
+[node name="HighScoreLayer" type="CanvasLayer" parent="."]
 process_mode = 2
 visible = false
 script = ExtResource("4_jp8c3")
-focusChild = NodePath("LevelFinished/ButtonContainer/NextButton")
 
 [node name="LevelFinished" type="Control" parent="HighScoreLayer"]
 layout_mode = 3
