@@ -86,7 +86,7 @@ func goto_lvl5():
 	
 func goto_lvl6():
 	current_lvl = "lvl6"
-	transition("res://levels/level_5.tscn", on_level_loaded)
+	transition("res://levels/level_6.tscn", on_level_loaded)
 	
 func goto_lvl10():
 	current_lvl = "lvl10"
