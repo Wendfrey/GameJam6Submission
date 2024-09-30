@@ -14,7 +14,7 @@ config/name="Speed Jam Game"
 run/main_scene="res://levels/RootMain.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [audio]
 
