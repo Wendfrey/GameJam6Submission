@@ -1,10 +1,11 @@
-[gd_scene load_steps=56 format=3 uid="uid://4dqb7pkneb6l"]
+[gd_scene load_steps=57 format=3 uid="uid://4dqb7pkneb6l"]
 
 [ext_resource type="Script" path="res://levels/MainMenu3DScene.gd" id="1_fa1nj"]
 [ext_resource type="Animation" uid="uid://bcjsvt38jw5sp" path="res://objects/player/animations/brakeEndAnim.res" id="2_5dq1p"]
 [ext_resource type="Animation" uid="uid://svwweqynrf8n" path="res://objects/player/animations/brakeStartAnim.res" id="3_1f77s"]
 [ext_resource type="Material" uid="uid://dyds7ksti1y0t" path="res://assets/materials/trashMusty.tres" id="4_ndqcn"]
 [ext_resource type="Material" uid="uid://xhcg7cxfy37h" path="res://assets/materials/SilverMusty.tres" id="5_7wx6s"]
+[ext_resource type="Texture2D" uid="uid://cf77e5wqhhsa4" path="res://title.png" id="6_v8nxc"]
 
 [sub_resource type="Animation" id="Animation_0whti"]
 resource_name = "mainMenu"
@@ -2691,7 +2692,6 @@ libraries = {
 }
 
 [node name="spaceship" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117707, -0.573461)
 
 [node name="trashProp" type="MeshInstance3D" parent="spaceship"]
 transform = Transform3D(0.278743, -0.125003, 0.952196, -0.930722, 0.209277, 0.299931, -0.236765, -0.969834, -0.0580085, -14.4636, -1.87884, -9.31427)
@@ -2903,14 +2903,14 @@ size = 12.619
 environment = SubResource("Environment_retld")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.6644, 1.904, -20.0381)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7602, 1.904, 21.2291)
 mesh = SubResource("ArrayMesh_n0jba")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_ndqcn")
 surface_material_override/1 = ExtResource("5_7wx6s")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.452272, -0.875406, -0.170636, 0.724782, -0.249252, -0.642312, 0.519752, -0.414173, 0.747208, -1.8133, 0, 12.2973)
+transform = Transform3D(0.156406, -0.875406, -0.457386, 0.664665, -0.249253, 0.70434, -0.730588, -0.414172, 0.542867, -1.8133, 0, 12.2973)
 mesh = SubResource("ArrayMesh_thyr2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_ndqcn")
@@ -2950,3 +2950,7 @@ mesh = SubResource("ArrayMesh_8iyq4")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_ndqcn")
 surface_material_override/1 = ExtResource("5_7wx6s")
+
+[node name="TitleSprite" type="Sprite3D" parent="."]
+transform = Transform3D(-0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, -0.422618, -26.2651, 1.12323, 10.2838)
+texture = ExtResource("6_v8nxc")
