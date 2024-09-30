@@ -10,6 +10,7 @@ radius = 1.13228
 albedo_texture = ExtResource("2_7ep22")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnbem"]
+resource_local_to_scene = true
 albedo_color = Color(1, 0.298039, 0.254902, 1)
 emission = Color(1, 0, 0.223529, 1)
 emission_energy_multiplier = 1.72

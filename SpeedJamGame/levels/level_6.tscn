@@ -38,7 +38,6 @@ orientation = 1
 [node name="Level_6" type="Node3D" node_paths=PackedStringArray("door")]
 script = ExtResource("1_3e5ei")
 door = NodePath("Door")
-level_name = "lvl2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.251529, 0.96785, 0, -0.96785, -0.251529, 0, 11.8507, 0)
