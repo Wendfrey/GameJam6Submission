@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/LevelBase.gd" id="1_daga6"]
 [ext_resource type="PackedScene" uid="uid://bxiykidlkbj81" path="res://objects/player/player_controller.tscn" id="2_vm3th"]
-[ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="3_t7etb"]
+[ext_resource type="PackedScene" uid="uid://d0cpa7c3ve6st" path="res://objects/door/door.tscn" id="3_t7etb"]
 [ext_resource type="MeshLibrary" uid="uid://j5l0lgaag70h" path="res://assets/unfold/tileLibrary.tres" id="4_oimae"]
 [ext_resource type="PackedScene" uid="uid://cyc01qp6tmpbf" path="res://objects/teleporter/teleport.tscn" id="7_vapab"]
 [ext_resource type="PackedScene" uid="uid://dcs5cay4ae5v5" path="res://objects/collectable/collectable_item.tscn" id="8_nmme0"]
@@ -73,11 +73,11 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="TP01" parent="GridMap" node_paths=PackedStringArray("Destiny") instance=ExtResource("7_vapab")]
-transform = Transform3D(1.00352, 0, 0, 0, 1.00352, 0, 0, 0, 1.00352, 20.9965, -0.287901, -26.9903)
+transform = Transform3D(1.00352, 0, 0, 0, 1.00352, 0, 0, 0, 1.00352, 20.9965, -1.79318, -26.9903)
 Destiny = NodePath("../TP02")
 
 [node name="TP02" parent="GridMap" node_paths=PackedStringArray("Destiny") instance=ExtResource("7_vapab")]
-transform = Transform3D(1.00352, 0, 0, 0, 1.00352, 0, 0, 0, 1.00352, -20.9427, -0.402766, 20.8712)
+transform = Transform3D(1.00352, 0, 0, 0, 1.00352, 0, 0, 0, 1.00352, -20.9427, -1.90805, 20.8712)
 Destiny = NodePath("../TP01")
 
 [node name="pickups" type="Node" parent="."]
