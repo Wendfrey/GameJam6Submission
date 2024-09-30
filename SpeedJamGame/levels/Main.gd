@@ -27,7 +27,7 @@ func _on_main_menu_start_game():
 	$MainMenu.visible = false
 	goto_lvl1()
 
-func _on_level_finished(lvl_name):
+func _on_level_finished():
 	get_tree().paused = true
 	
 	var lvl = 0
@@ -58,11 +58,11 @@ func load_scene(scene:Node3D):
 
 func goto_main_menu():
 	current_lvl = "main_menu"
-	transition("res://levels/main_menu_scene.tscn", func(): 
-		if get_tree().paused:
-			get_tree().paused = false
-		$MainMenu.visible = true
-		)
+	non_pausing_transition("res://levels/main_menu_scene.tscn", func(): $MainMenu.visible = true)
+	
+func goto_howtoplay():
+	current_lvl = "tutorial"
+	non_pausing_transition("res://levels/tutorialWorld.tscn")
 	
 func goto_lvl1():
 	current_lvl = "lvl1"
@@ -114,6 +114,24 @@ func transition(resourcePath: String, on_finish_tween: Callable = func():pass):
 		on_finish_tween.call()
 	)
 
+func non_pausing_transition(resourcePath: String, on_finish_tween: Callable = func():pass):
+	$TransitionLayer.visible = true
+	var transitionTween = create_tween()
+	transitionTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	fadeinoutBackground.visible = true
+	transitionTween.tween_property(fadeinoutBackground, "color", Color.BLACK, 0.5).from(Color(0, 0, 0, 0))
+	transitionTween.tween_callback(func ():
+		if (get_tree().paused): get_tree().paused = false
+		var instance = load(resourcePath).instantiate()
+		load_scene(instance)
+	)
+	transitionTween.tween_property(fadeinoutBackground, "color", Color(0, 0, 0, 0), 0.5).from(Color.BLACK)
+	transitionTween.tween_interval(0.1)
+	transitionTween.tween_callback(func():
+		$TransitionLayer.visible = false
+		on_finish_tween.call()
+	)
+
 func stopTimer() -> int:
 	$CounterLayer.visible = false
 	return $CounterLayer/Control/TimerLabel.stopTimer()
@@ -131,7 +149,8 @@ func _on_next_level():
 		"lvl5": goto_lvl6()
 		"lvl6": goto_lvl10()
 		"lvl10": goto_main_menu()
-		_: print("NO MATCH")
+		#_: print("NO MATCH")
+		_: goto_main_menu()
 
 func _on_retry_level():
 	$HighScoreLayer.visible = false
@@ -143,7 +162,8 @@ func _on_retry_level():
 		"lvl5": goto_lvl5()
 		"lvl6": goto_lvl6()
 		"lvl10": goto_lvl10()
-		_: print("NO MATCH")
+		#_: print("NO MATCH")
+		_: goto_main_menu()
 
 
 func _on_pause_menu_level_restart():
@@ -162,10 +182,13 @@ func _unhandled_input(event):
 		
 var optionsLatestCanvas: CanvasLayer
 func _signals_open_options(caller):
-	print(caller)
 	optionsLatestCanvas = get_node(caller)
 	optionsLatestCanvas.visible = false
 	$OptionsMenu.visible = true
 
 func _on_options_menu_exit():
 	optionsLatestCanvas.visible = true
+
+func _on_main_menu_howplay():
+	$MainMenu.visible = false
+	goto_howtoplay()

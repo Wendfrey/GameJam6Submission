@@ -39,10 +39,14 @@ grow_vertical = 2
 [node name="StartButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 2
-focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_bottom = NodePath("../CreditsButton")
 theme_override_font_sizes/font_size = 50
 text = "START"
+
+[node name="HowPlayButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "HOW TO PLAY"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
 layout_mode = 2
@@ -53,16 +57,12 @@ text = "OPTIONS"
 [node name="CreditsButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 30
 text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-focus_neighbor_top = NodePath("../CreditsButton")
-focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
@@ -125,6 +125,7 @@ bus = &"Music"
 
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/StartButton" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/Control/MainMenuContainer/HowPlayButton" to="." method="_on_main_menu_howplay"]
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/OptionsButton" to="." method="_signals_open_options" binds= ["MainMenu"]]
 [connection signal="pressed" from="MainMenu/Control/MainMenuContainer/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
 [connection signal="next_level" from="HighScoreLayer" to="." method="_on_next_level"]

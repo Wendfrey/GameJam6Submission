@@ -17,6 +17,7 @@ var audioID = AudioServer.get_bus_index("Audio") :
 	
 	
 func _ready():
+	super._ready()
 	masterSlider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(masterID)))
 	musicSlider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(musicID)))
 	audioSlider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(audioID)))

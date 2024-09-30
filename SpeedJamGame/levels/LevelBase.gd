@@ -1,9 +1,8 @@
 extends Node3D
 
-signal level_finished(lvl_code)
+signal level_finished
 
 @export var door:Node3D
-@export var level_name:String = "lvl0"
 var listNodes:Array[Node] = []
 
 func _ready():
@@ -27,4 +26,4 @@ func player_collected_pickup(node:Node3D):
 		door.play_anim()
 
 func _on_door_player_reached_end():
-	emit_signal("level_finished", level_name)
+	emit_signal("level_finished")
