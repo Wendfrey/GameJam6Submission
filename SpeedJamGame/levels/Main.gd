@@ -9,7 +9,7 @@ var current_lvl
 
 func _ready():
 	fileStorage = load("res://FileIO.gd").new(saveFilepath)
-	recordData = load("res://HighscoreData.gd").new(3, 5)
+	recordData = load("res://HighscoreData.gd").new(8, 5)
 	recordData.set_data(fileStorage.read_file())
 	
 	$MainMenu.visible = true
@@ -102,6 +102,7 @@ func on_level_loaded():
 	startTimer()
 
 func transition(resourcePath: String, on_finish_tween: Callable = func():pass):
+	get_tree().paused = true
 	$TransitionLayer.visible = true
 	var transitionTween = create_tween()
 	transitionTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -199,3 +200,13 @@ func _on_options_menu_exit():
 func _on_main_menu_howplay():
 	$MainMenu.visible = false
 	goto_howtoplay()
+
+func _on_level_selection_level_selected(lvl_id):
+	$LevelSelection.visible = false
+	current_lvl = lvl_id
+	_on_retry_level()
+
+
+func _on_goto_lvl_sel_pressed():
+	$MainMenu.visible = false
+	$LevelSelection.visible = true

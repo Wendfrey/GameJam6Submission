@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgverhngleby"]
+
+[ext_resource type="Script" path="res://levels/level_selection.gd" id="1_p3it7"]
+
+[node name="LevelSelection" type="CanvasLayer" node_paths=PackedStringArray("focusChild")]
+script = ExtResource("1_p3it7")
+focusChild = NodePath("Control/GridContainer/LevelButton1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 525.0
+offset_top = 523.0
+offset_right = -501.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "RETURN"
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 172.0
+offset_top = 114.0
+offset_right = -153.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="LevelButton1" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 1"
+
+[node name="LevelButton2" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 2"
+
+[node name="LevelButton3" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 3"
+
+[node name="LevelButton4" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 4"
+
+[node name="LevelButton5" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 5"
+
+[node name="LevelButton6" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 6"
+
+[node name="LevelButton7" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 7"
+
+[node name="LevelButton8" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 8"
+
+[connection signal="pressed" from="Control/Return Button" to="." method="_on_return_button_pressed"]

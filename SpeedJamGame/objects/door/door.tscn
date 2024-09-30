@@ -61,24 +61,6 @@ tracks/3/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_stkc5"]
-resource_name = "Reset"
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RightSideDoor/IntersectorRight")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.904873, 0, 0.843184)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftSideDoor/IntersectorLeft")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.904873, 0, 0.843184)
-
 [sub_resource type="Animation" id="Animation_o02oh"]
 length = 0.001
 tracks/0/type = "value"
@@ -117,6 +99,24 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-0.904873, 0, 0.843184)]
 }
+
+[sub_resource type="Animation" id="Animation_stkc5"]
+resource_name = "Reset"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightSideDoor/IntersectorRight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.904873, 0, 0.843184)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftSideDoor/IntersectorLeft")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.904873, 0, 0.843184)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yp53x"]
 _data = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfm0x8errofts"]
+[gd_scene load_steps=8 format=3 uid="uid://dfm0x8errofts"]
 
 [ext_resource type="Script" path="res://levels/Main.gd" id="1_pjjpi"]
 [ext_resource type="Script" path="res://levels/MainMenuScript.gd" id="2_huarr"]
@@ -6,10 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bslu44suymbxb" path="res://levels/high_score_layer_scene.tscn" id="4_estts"]
 [ext_resource type="PackedScene" uid="uid://dm0q1uh086kwt" path="res://levels/pause_menu.tscn" id="5_n4g8y"]
 [ext_resource type="PackedScene" uid="uid://px0cd34dsk52" path="res://levels/options_menu.tscn" id="6_3cbrp"]
+[ext_resource type="PackedScene" uid="uid://dgverhngleby" path="res://levels/level_selection.tscn" id="7_iy0kf"]
 
 [node name="Main" type="Node"]
 process_mode = 3
 script = ExtResource("1_pjjpi")
+
+[node name="LevelSelection" parent="." instance=ExtResource("7_iy0kf")]
+visible = false
 
 [node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
@@ -66,39 +70,47 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 55.0
-offset_top = 125.0
+offset_top = 136.0
 offset_right = -732.0
-offset_bottom = -111.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
 
 [node name="StartButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "START"
 
+[node name="LevelSelectionButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "SELECT LEVEL"
+
 [node name="HowPlayButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "HOW TO PLAY"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "OPTIONS"
 
 [node name="CreditsButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "QUIT"
 
@@ -159,9 +171,12 @@ visible = false
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 
+[connection signal="level_selected" from="LevelSelection" to="." method="_on_level_selection_level_selected"]
+[connection signal="return_main_menu" from="LevelSelection" to="MainMenu" method="_on_level_selection_return_main_menu"]
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="pressed" from="MainMenu/Credits/ReturnCreditsButton" to="MainMenu" method="_on_return_credits_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/StartButton" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/LevelSelectionButton" to="." method="_on_goto_lvl_sel_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/HowPlayButton" to="." method="_on_main_menu_howplay"]
 [connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/OptionsButton" to="." method="_signals_open_options" binds= ["MainMenu"]]
 [connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/CreditsButton" to="MainMenu" method="_on_credits_button_pressed"]

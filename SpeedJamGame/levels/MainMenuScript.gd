@@ -28,3 +28,7 @@ func _on_return_credits_button_pressed():
 	$MainMenuHolder.visible = true
 	$Credits.visible = false
 	focusChild.grab_focus()
+
+
+func _on_level_selection_return_main_menu():
+	visible = true
