@@ -6,12 +6,21 @@ var disableUntilLeaves = false;
 
 
 func _on_body_exited(body):
-	disableUntilLeaves = false
+	#disableUntilLeaves = false
 	pass # Replace with function body.
 
 func _on_body_entered(body):
-	if not disableUntilLeaves:
-		Destiny.disableUntilLeaves = true;
-		body.position.x = Destiny.position.x;
-		body.position.z = Destiny.position.z;
+	if body is CharacterBody3D:
+		if not disableUntilLeaves:
+			$TeleportSound.play()
+			Destiny._disable_tp()
+			body.global_position.x = Destiny.global_position.x;
+			body.global_position.z = Destiny.global_position.z;
+			(body as CharacterBody3D)
+		else:
+			disableUntilLeaves = false
+		
 	pass # Replace with function body.
+
+func _disable_tp():
+	disableUntilLeaves = true

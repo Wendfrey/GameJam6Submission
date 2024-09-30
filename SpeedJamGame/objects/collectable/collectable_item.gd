@@ -19,10 +19,12 @@ func _ready():
 		$Mesh.get_child(i).visible = (dat == i or ext == i)
 
 func _on_area_3d_body_entered(body):
-	visible = false
-	call_deferred("set_invisible")
-	emit_signal("player_contact", self)
-	body.pickup_amiation_ready = true
+	if body is CharacterBody3D:
+		visible = false
+		call_deferred("set_invisible")
+		emit_signal("player_contact", self)
+		body.pickup_amiation_ready = true
+		$Pickupsound.play()
 	
 func reset():
 	$Area3D.monitoring = true
