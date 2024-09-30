@@ -38,7 +38,8 @@ func _on_level_finished():
 		"lvl4": lvl = 4
 		"lvl5": lvl = 5
 		"lvl6": lvl = 6
-		"lvl10": lvl = 10
+		"lvl7": lvl = 7
+		"lvl8": lvl = 8
 	if lvl > 0:
 		var timeTotal:int = stopTimer()
 		var rIndex = recordData.set_record(lvl, timeTotal)
@@ -88,10 +89,14 @@ func goto_lvl6():
 	current_lvl = "lvl6"
 	transition("res://levels/level_6.tscn", on_level_loaded)
 	
-func goto_lvl10():
-	current_lvl = "lvl10"
-	transition("res://levels/level_10.tscn", on_level_loaded)
+func goto_lvl7():
+	current_lvl = "lvl7"
+	transition("res://levels/level_7.tscn", on_level_loaded)
 
+func goto_lvl8():
+	current_lvl = "lvl8"
+	transition("res://levels/level_8.tscn", on_level_loaded)
+	
 func on_level_loaded():
 	$CounterLayer.visible = true
 	startTimer()
@@ -147,8 +152,9 @@ func _on_next_level():
 		"lvl3": goto_lvl4()
 		"lvl4": goto_lvl5()
 		"lvl5": goto_lvl6()
-		"lvl6": goto_lvl10()
-		"lvl10": goto_main_menu()
+		"lvl6": goto_lvl7()
+		"lvl7": goto_lvl8()
+		"lvl8": goto_main_menu()
 		#_: print("NO MATCH")
 		_: goto_main_menu()
 
@@ -161,7 +167,8 @@ func _on_retry_level():
 		"lvl4": goto_lvl4()
 		"lvl5": goto_lvl5()
 		"lvl6": goto_lvl6()
-		"lvl10": goto_lvl10()
+		"lvl7": goto_lvl7()
+		"lvl8": goto_lvl8()
 		#_: print("NO MATCH")
 		_: goto_main_menu()
 
