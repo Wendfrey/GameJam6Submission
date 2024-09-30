@@ -14,9 +14,10 @@ script = ExtResource("1_pjjpi")
 [node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
 script = ExtResource("2_huarr")
-focusChild = NodePath("Control/MainMenuContainer/StartButton")
+focusChild = NodePath("MainMenuHolder/MainMenuContainer/StartButton")
 
-[node name="Control" type="Control" parent="MainMenu"]
+[node name="Credits" type="Control" parent="MainMenu"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +25,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuContainer" type="VBoxContainer" parent="MainMenu/Control"]
+[node name="Panel" type="PanelContainer" parent="MainMenu/Credits"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 527.0
+
+[node name="Label" type="RichTextLabel" parent="MainMenu/Credits/Panel"]
+layout_mode = 2
+focus_mode = 2
+bbcode_enabled = true
+selection_enabled = true
+
+[node name="ReturnCreditsButton" type="Button" parent="MainMenu/Credits"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -84.0
+offset_right = 63.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "RETURN"
+
+[node name="MainMenuHolder" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuContainer" type="VBoxContainer" parent="MainMenu/MainMenuHolder"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,31 +72,31 @@ offset_bottom = -111.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+[node name="StartButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "START"
 
-[node name="HowPlayButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+[node name="HowPlayButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "HOW TO PLAY"
 
-[node name="OptionsButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+[node name="OptionsButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "OPTIONS"
 
-[node name="CreditsButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+[node name="CreditsButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "CREDITS"
 
-[node name="QuitButton" type="Button" parent="MainMenu/Control/MainMenuContainer"]
+[node name="QuitButton" type="Button" parent="MainMenu/MainMenuHolder/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
@@ -124,10 +160,12 @@ visible = false
 bus = &"Music"
 
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
-[connection signal="pressed" from="MainMenu/Control/MainMenuContainer/StartButton" to="MainMenu" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/Control/MainMenuContainer/HowPlayButton" to="." method="_on_main_menu_howplay"]
-[connection signal="pressed" from="MainMenu/Control/MainMenuContainer/OptionsButton" to="." method="_signals_open_options" binds= ["MainMenu"]]
-[connection signal="pressed" from="MainMenu/Control/MainMenuContainer/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu/Credits/ReturnCreditsButton" to="MainMenu" method="_on_return_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/StartButton" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/HowPlayButton" to="." method="_on_main_menu_howplay"]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/OptionsButton" to="." method="_signals_open_options" binds= ["MainMenu"]]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/CreditsButton" to="MainMenu" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenuHolder/MainMenuContainer/QuitButton" to="MainMenu" method="_on_quit_button_pressed"]
 [connection signal="next_level" from="HighScoreLayer" to="." method="_on_next_level"]
 [connection signal="retry_level" from="HighScoreLayer" to="." method="_on_retry_level"]
 [connection signal="level_restart" from="PauseLayer" to="." method="_on_pause_menu_level_restart"]

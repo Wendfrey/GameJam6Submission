@@ -8,7 +8,7 @@ var recordData
 var current_lvl
 
 func _ready():
-	fileStorage = load("res://HighscoreRecorder.gd").new(saveFilepath)
+	fileStorage = load("res://FileIO.gd").new(saveFilepath)
 	recordData = load("res://HighscoreData.gd").new(3, 5)
 	recordData.set_data(fileStorage.read_file())
 	
@@ -176,7 +176,7 @@ func _on_pause_menu_return_menu():
 	goto_main_menu()
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel") and current_lvl != "main_menu":
+	if event.is_action_pressed("ui_cancel") and current_lvl != "main_menu" and not $TransitionLayer.visible:
 		get_tree().paused = not get_tree().paused
 		$PauseLayer.visible = get_tree().paused
 		
