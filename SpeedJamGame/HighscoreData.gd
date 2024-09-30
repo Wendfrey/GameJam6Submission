@@ -35,7 +35,6 @@ func set_record(level:int, newrecord:int) -> int:
 				levelScores[index] = levelScores[index-1]
 			levelScores[recordIndex] = newrecord
 		savedHighscores[str(level)] = levelScores
-	print("Set result: ", savedHighscores, " - New result: ", newrecord, " - index result: ", recordIndex)
 	return recordIndex
 
 func get_records(level:int) -> Dictionary:
@@ -54,12 +53,9 @@ func get_records(level:int) -> Dictionary:
 
 func set_data(raw_data: PackedByteArray):
 	var dataString = raw_data.get_string_from_utf8()
-	print("Data string: ", dataString)
 	var result = JSON.parse_string(raw_data.get_string_from_utf8())
 	if (result):
 		savedHighscores = result
-		
-	print("Set data: ", savedHighscores)
 
 func convert_data() -> PackedByteArray:
 	print("Convert data: ", savedHighscores)
