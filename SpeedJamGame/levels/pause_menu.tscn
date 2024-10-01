@@ -4,6 +4,7 @@
 
 [node name="PauseLayer" type="CanvasLayer" node_paths=PackedStringArray("focusChild")]
 process_mode = 2
+visible = false
 script = ExtResource("1_o8lbc")
 focusChild = NodePath("PauseMenu/VBoxContainer/ContinueButton")
 

@@ -16,17 +16,20 @@ grow_vertical = 2
 
 [node name="Return Button" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 525.0
-offset_top = 523.0
-offset_right = -501.0
-offset_bottom = -75.0
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.846
+anchor_right = 0.51
+anchor_bottom = 0.846
+offset_left = -62.5201
+offset_top = -25.208
+offset_right = 63.4799
+offset_bottom = 24.792
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "RETURN"
+metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1

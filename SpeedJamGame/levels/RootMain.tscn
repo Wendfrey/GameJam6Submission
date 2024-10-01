@@ -20,6 +20,7 @@ visible = false
 
 [node name="MainMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("focusChild")]
 process_mode = 1
+visible = false
 script = ExtResource("2_huarr")
 focusChild = NodePath("MainMenuHolder/MainMenuContainer/StartButton")
 
@@ -33,9 +34,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="PanelContainer" parent="MainMenu/Credits"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 527.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.813
+offset_bottom = 0.175964
 theme_override_styles/panel = SubResource("StyleBoxFlat_fiwvk")
 
 [node name="Label" type="RichTextLabel" parent="MainMenu/Credits/Panel"]
@@ -46,15 +49,15 @@ selection_enabled = true
 
 [node name="ReturnCreditsButton" type="Button" parent="MainMenu/Credits"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.909
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.909
 offset_left = -63.0
-offset_top = -84.0
+offset_top = -25.032
 offset_right = 63.0
-offset_bottom = -34.0
+offset_bottom = 24.968
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
@@ -167,7 +170,6 @@ color = Color(1, 1, 1, 0)
 process_mode = 1
 
 [node name="PauseLayer" parent="." instance=ExtResource("5_n4g8y")]
-visible = false
 
 [node name="OptionsMenu" parent="." instance=ExtResource("6_3cbrp")]
 visible = false
